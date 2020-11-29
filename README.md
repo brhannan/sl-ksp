@@ -8,5 +8,5 @@ krpc
 Yeah so this really just a GN&C geekfest.
 
 ## Examples and Cool Pictures
-<tbd>
+TBD
 
