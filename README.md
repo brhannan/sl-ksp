@@ -8,7 +8,7 @@ MATLAB
 Simulink
 
 ## Why?
-Yeah so this just a GN&C geekfest.
+Yeah so this is really nothing more than a GN&C geekfest.
 
 ## Examples, cool pictures, etc.
 TBD
