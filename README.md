@@ -1,2 +1,2 @@
 # sl-ksp
-A framework for interfacing Simulink and Kerbal Space Program
+Control a rocket in Kerbal Space Program with Simulink/MATLAB.
