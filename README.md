@@ -2,11 +2,14 @@
 Control a rocket in Kerbal Space Program with Simulink/MATLAB.
 
 ## Dependencies
-krpc
+[Kerbal Space Program](kerbalspaceprogram.com)
+[krpc](krpc.github.io)
+MATLAB
+Simulink
 
 ## Why?
-Yeah so this really just a GN&C geekfest.
+Yeah so this just a GN&C geekfest.
 
-## Examples and Cool Pictures
+## Examples, cool pictures, etc.
 TBD
 
