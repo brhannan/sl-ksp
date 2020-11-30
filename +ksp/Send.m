@@ -45,8 +45,16 @@ classdef Send < matlab.System ...
         end
 
         function y = stepImpl(obj,u)
-            coder.ceval('launchTest');
-            y = u;
+            % get include path
+            incl = fullfile(ksp.utils.getPkgRoot(),'include');
+            coder.cinclude(incl);
+            % get krpc path
+            krpc = ksp.utils.getkRPCRoot();
+            coder.cinclude(krpc);
+            % call send_launch_cmd function
+            coder.ceval('send_launch_cmd');
+            % output 1
+            y = 1;
         end
 
         function resetImpl(obj)
@@ -115,37 +123,5 @@ classdef Send < matlab.System ...
             group = matlab.system.display.Section(mfilename("class"));
         end
     end
-    
-    methods (Static)
-
-        function updateBuildInfo(buildInfo,context)
-            % when code is generated, we assume that the FastLEDWrite root
-            % directory contains three subdirectories: include, src and
-            % FastLED, which contains all FastLED library code
-            %
-            % it is assumed that the board type is AVR
-
-            if context.isCodeGenTarget('rtw')
-                % get paths to src, include and FastLED directories
-                pkgRoot = fledblk.utils.getFastLEDDriverFolder();
-                fastLEDDir = fledblk.utils.getFastLEDLibFolder();
-                srcDir = fullfile(pkgRoot,'src');
-                inclDir = fullfile(pkgRoot,'include');
-                % add custom source files
-                buildInfo.addIncludePaths(inclDir);
-                buildInfo.addSourceFiles('fastLEDWriteRGB.cpp',srcDir);
-                % add FastLED library source
-                buildInfo.addIncludePaths(fastLEDDir);
-                buildInfo.addIncludeFiles('FastLED.h');
-                buildInfo.addSourceFiles('FastLED.cpp',fastLEDDir);
-                % add arduino SPI source (requires AVR board)
-                spiSrcPath = fledblk.utils.getArduinoAVRSPIFolder();
-                buildInfo.addIncludePaths(spiSrcPath);
-                buildInfo.addSourceFiles('SPI.cpp',spiSrcPath);
-            end
-
-        end % updateBuildInfo
-
-    end % static methods
     
 end
