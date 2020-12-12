@@ -1,5 +1,5 @@
-classdef Send < matlab.System ...
-    & matlab.system.mixin.Propagates & matlab.system.mixin.CustomIcon
+classdef Send < matlab.System & matlab.system.mixin.Propagates & ...
+        matlab.system.mixin.CustomIcon
     %KSP.SEND Send commands to Kerbal Space Program.
     %   KS = KSP.SEND creates a new KSP.SEND System object. KSP.SEND
     %   transmits commands to an instance of Kerbal Space Program.
@@ -10,58 +10,70 @@ classdef Send < matlab.System ...
     
     %#codegen
     %#ok<*EMCA>
-
-    % Public, tunable properties
-    properties
-
+    
+    properties(Hidden,Nontunable)
+        %Conn kRPC connection object
+        %   Conn is the krpc.connection.Connection object returned by
+        %   krpc.connect().
+        Conn
+        %Vessel Vessel object
+        %   Vessel is the SpaceCenter.Vessel object returned by
+        %   SpaceCenter.active_vessel().
+        Vessel
+        %InputBusName Input bus
+        %   The name of input bus object.
+        InputBusName = 'bus_name'
     end
-
-    % Public, non-tunable properties
-    properties(Nontunable)
-
-    end
-
-    properties(DiscreteState)
-
-    end
-
-    % Pre-computed constants
-    properties(Access = private)
-
+    
+    properties(Access=protected)
+        AutopilotEngaged = false;
     end
 
     methods
         % Constructor
-        function obj = untitled(varargin)
+        function obj = Send(varargin)
             % Support name-value pair arguments when constructing object
             setProperties(obj,nargin,varargin{:})
         end
     end
 
     methods(Access = protected)
-        %% Common functions
+        
+        % Common functions
+        
         function setupImpl(obj)
-            % Perform one-time calculations, such as computing constants
+            obj.connect();
+            obj.getActiveVessel();
         end
 
-        function y = stepImpl(obj,u)
-            % get include path
-            incl = fullfile(ksp.utils.getPkgRoot(),'include');
-            coder.cinclude(incl);
-            % get krpc path
-            krpc = ksp.utils.getkRPCRoot();
-            coder.cinclude(krpc);
-            % call send_launch_cmd function
-            coder.ceval('send_launch_cmd');
-            % output 1
-            y = 1;
+        function stepImpl(obj,u)
+            
+            % autopilot settings
+            if u.autopilot.engage && ~obj.AutopilotEngaged
+                % set autopilot pitch, heading
+                obj.Vessel.auto_pilot.target_pitch_and_heading( ...
+                    u.autopilot.targetPitch, u.autopilot.targetHeading);
+                obj.Vessel.control.throttle = 1; % --- test only ---
+                % engage autopilot
+                obj.Vessel.auto_pilot.engage();
+                obj.AutopilotEngaged = true;
+                fprintf('Autopilot engaged\n');
+            end
+            
+            % activate next stage
+            if u.control.activateNextStage
+                obj.activateNextStage();
+                fprintf('Next stage activated\n');
+            end
+            
         end
 
         function resetImpl(obj)
             % Initialize / reset discrete-state properties
         end
 
-        %% Backup/restore functions
+        % Backup/restore functions
+        
         function s = saveObjectImpl(obj)
             % Set properties in structure s to values in object obj
 
@@ -82,7 +94,8 @@ classdef Send < matlab.System ...
             loadObjectImpl@matlab.System(obj,s,wasLocked);
         end
 
-        %% Simulink functions
+        % Simulink functions
+        
         function ds = getDiscreteStateImpl(obj)
             % Return structure of properties with DiscreteState attribute
             ds = struct([]);
@@ -94,34 +107,54 @@ classdef Send < matlab.System ...
             flag = false;
         end
 
-        function out = getOutputSizeImpl(obj)
-            % Return size for each output port
-            out = [1 1];
-
-            % Example: inherit size from first input port
-            % out = propagatedInputSize(obj,1);
-        end
-
         function icon = getIconImpl(obj)
-            % Define icon for System block
-            icon = mfilename("class"); % Use class name
-            % icon = "My System"; % Example: text icon
-            % icon = ["My","System"]; % Example: multi-line text icon
-            % icon = matlab.system.display.Icon("myicon.jpg"); % Example: image file icon
+            % define icon for System block
+            % icon = mfilename("class"); % Use class name
+            icon = "KSP TX"; % Example: text icon
         end
-    end
+        
+        function out = getInputDataTypeImpl(obj)
+            out = obj.InputBusName;
+        end
+    
+    end % protected methods
 
     methods(Static, Access = protected)
-        %% Simulink customization functions
-        function header = getHeaderImpl
+        
+        % Simulink customization functions
+        
+        function header = getHeaderImpl()
             % Define header panel for System block dialog
             header = matlab.system.display.Header(mfilename("class"));
         end
 
-        function group = getPropertyGroupsImpl
+        function group = getPropertyGroupsImpl()
             % Define property section(s) for System block dialog
             group = matlab.system.display.Section(mfilename("class"));
         end
+        
     end
+    
+    methods(Access=protected)
+        
+        function connect(obj)
+            % connect to KSP via kRPC
+            obj.Conn = py.krpc.connect();
+        end
+        
+        function getActiveVessel(obj)
+            if isempty(obj.Conn)
+                error('ksp:Send:connNotActive', ...
+                    'There is no active KSP connection.');
+            end
+            obj.Vessel = obj.Conn.space_center.active_vessel;
+            % what if vessel isempty?
+        end
+        
+        function activateNextStage(obj)
+            obj.Vessel.control.activate_next_stage();
+        end
+        
+    end % methods
     
 end

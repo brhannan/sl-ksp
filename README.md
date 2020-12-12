@@ -7,11 +7,9 @@ Control a rocket in Kerbal Space Program with Simulink/MATLAB.
 MATLAB  
 Simulink  
 
-## Is this practical?
-Why would you ask that.
-
-## So... why?
-Yeah so this is really nothing more than a GN&C geekfest.
+## Setup
+See erikreinersten.com/python-3-in-matlab to get MATLAB to understand "python3".  
+See steam's learn to code using KSP youtube video for installing the server/client.
 
 ## Examples, cool pictures, etc.
 TBD
