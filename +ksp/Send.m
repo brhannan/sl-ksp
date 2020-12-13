@@ -3,10 +3,6 @@ classdef Send < matlab.System & matlab.system.mixin.Propagates & ...
     %KSP.SEND Send commands to Kerbal Space Program.
     %   KS = KSP.SEND creates a new KSP.SEND System object. KSP.SEND
     %   transmits commands to an instance of Kerbal Space Program.
-    %
-    %   % EXAMPLE:
-    %       ks = ksp.Send;
-    %       ks.step('Command','Launch')
     
     %#codegen
     %#ok<*EMCA>
@@ -22,7 +18,7 @@ classdef Send < matlab.System & matlab.system.mixin.Propagates & ...
         Vessel
         %InputBusName Input bus
         %   The name of input bus object.
-        InputBusName = 'bus_name'
+        InputBusName = 'kspTxIn'
     end
     
     properties(Access=protected)

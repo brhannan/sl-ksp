@@ -1,66 +1,56 @@
-classdef Receive < matlab.System ...
-    & matlab.system.mixin.Propagates & matlab.system.mixin.CustomIcon
-    %KSP.RECEIVE Receive commands from Kerbal Space Program.
-    %   KR = KSP.RECEIVE creates a new KSP.RECEIVE System object. KR
-    %   receives data from an instance of Kerbal Space Program.
-    %
-    %   % EXAMPLE:
-    %       ks = ksp.Receive;
+classdef Receive < matlab.System & matlab.system.mixin.Propagates & ...
+        matlab.system.mixin.CustomIcon
+    %KSP.RECEIVE Receive from Kerbal Space Program.
+    %   KR = KSP.RECEIVE creates a new KSP.RECEIVE System object. 
+    %   KSP.RECEIVE receives data from an instance of Kerbal Space Program.
     
     %#codegen
     %#ok<*EMCA>
-
-    % Public, tunable properties
-    properties
-
-    end
-
-    % Public, non-tunable properties
-    properties(Nontunable)
-
-    end
-
-    properties(DiscreteState)
-
-    end
-
-    % Pre-computed constants
-    properties(Access = private)
-
+    
+    properties(Hidden,Nontunable)
+        %Conn kRPC connection object
+        %   Conn is the krpc.connection.Connection object returned by
+        %   krpc.connect().
+        Conn
+        %Vessel Vessel object
+        %   Vessel is the SpaceCenter.Vessel object returned by
+        %   SpaceCenter.active_vessel().
+        Vessel
+        %OutputBusName Output bus
+        %   The name of output bus object.
+        OutputBusName = 'kspRxOut'
     end
 
     methods
         % Constructor
-        function obj = untitled(varargin)
+        function obj = Send(varargin)
             % Support name-value pair arguments when constructing object
             setProperties(obj,nargin,varargin{:})
         end
     end
 
     methods(Access = protected)
-        %% Common functions
+        
+        % Common functions
+        
         function setupImpl(obj)
-            % Perform one-time calculations, such as computing constants
+            obj.connect();
+            obj.getActiveVessel();
         end
 
-        function y = stepImpl(obj,u)
-            % get include path
-%             incl = fullfile(ksp.utils.getPkgRoot(),'include');
-%             coder.cinclude(incl);
-%             % get krpc path
-%             krpc = ksp.utils.getkRPCRoot();
-%             coder.cinclude(krpc);
-%             % call send_launch_cmd function
-%             coder.ceval('send_launch_cmd');
-            % output 1
-            y = 1;
-        end
+        function u = stepImpl(obj)
+            
+            lqdFuelAmt = obj.Vessel.resources.amount('LiquidFuel');
+            u.liquidFuelAmt = lqdFuelAmt;
+            
+        end % stepImpl
 
         function resetImpl(obj)
             % Initialize / reset discrete-state properties
         end
 
-        %% Backup/restore functions
+        % Backup/restore functions
+        
         function s = saveObjectImpl(obj)
             % Set properties in structure s to values in object obj
 
@@ -81,46 +71,78 @@ classdef Receive < matlab.System ...
             loadObjectImpl@matlab.System(obj,s,wasLocked);
         end
 
-        %% Simulink functions
+        % Simulink functions
+        
         function ds = getDiscreteStateImpl(obj)
             % Return structure of properties with DiscreteState attribute
             ds = struct([]);
         end
+        
+        function cp = isOutputComplexImpl(obj)
+            cp = false;
+        end
+        
+        function sz = getOutputSizeImpl(obj,index)
+            sz = 1;
+        end
+        
+        function flag = isOutputFixedSizeImpl(obj,index)
+            flag = true;
+        end
 
-        function flag = isInputSizeMutableImpl(obj,index)
-            % Return false if input size cannot change
+        function flag = isOutputSizeMutableImpl(obj,index)
+            % Return false if output size cannot change
             % between calls to the System object
             flag = false;
         end
 
-        function out = getOutputSizeImpl(obj)
-            % Return size for each output port
-            out = [1 1];
-
-            % Example: inherit size from first input port
-            % out = propagatedInputSize(obj,1);
-        end
-
         function icon = getIconImpl(obj)
-            % Define icon for System block
-            icon = mfilename("class"); % Use class name
-            % icon = "My System"; % Example: text icon
-            % icon = ["My","System"]; % Example: multi-line text icon
-            % icon = matlab.system.display.Icon("myicon.jpg"); % Example: image file icon
+            % define icon for System block
+            % icon = mfilename("class"); % Use class name
+            icon = "KSP RX"; % Example: text icon
         end
-    end
+        
+        function out = getOutputDataTypeImpl(obj)
+            out = obj.OutputBusName;
+        end
+    
+    end % protected methods
 
     methods(Static, Access = protected)
-        %% Simulink customization functions
-        function header = getHeaderImpl
+        
+        % Simulink customization functions
+        
+        function header = getHeaderImpl()
             % Define header panel for System block dialog
             header = matlab.system.display.Header(mfilename("class"));
         end
 
-        function group = getPropertyGroupsImpl
+        function group = getPropertyGroupsImpl()
             % Define property section(s) for System block dialog
             group = matlab.system.display.Section(mfilename("class"));
         end
+        
     end
+    
+    methods(Access=protected)
+        
+        function connect(obj)
+            % connect to KSP via kRPC
+            obj.Conn = py.krpc.connect();
+        end
+        
+        function getActiveVessel(obj)
+            if isempty(obj.Conn)
+                error('ksp:Send:connNotActive', ...
+                    'There is no active KSP connection.');
+            end
+            obj.Vessel = obj.Conn.space_center.active_vessel;
+        end
+        
+        function activateNextStage(obj)
+            obj.Vessel.control.activate_next_stage();
+        end
+        
+    end % methods
     
 end
