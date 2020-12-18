@@ -66,9 +66,12 @@ classdef Send < matlab.System & matlab.system.mixin.Propagates & ...
 
         function resetImpl(obj)
             % Initialize / reset discrete-state properties
-            obj.Conn = [];
-            obj.Vessel = [];
         end
+        
+%         function releaseImpl(obj)
+%             obj.Conn = [];
+%             obj.Vessel = [];
+%         end
 
         % Backup/restore functions
         
