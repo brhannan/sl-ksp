@@ -4,7 +4,7 @@ Control a rocket in Kerbal Space Program from Simulink.
 ## Dependencies
 Kerbal Space Program 1.5.1  
 [krpc 0.4.8](https://krpc.github.io/krpc)  
-MATLAB  
+MATLAB R2020b  
 Simulink  
 Stateflow  
 Python 3.x
