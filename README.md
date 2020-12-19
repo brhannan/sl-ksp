@@ -18,6 +18,6 @@ See [this video](https://www.youtube.com/watch?v=RQzWri_K_UY) for kRPC setup ins
 
 <p float = "left">
     <img src="doc/images/sl_demo.png" width ="600" />
-    <img src="doc/images/ksp_demo.png" width="750" />
+    <img src="doc/images/ksp_demo.png" width="600" />
 </p>
 
