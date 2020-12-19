@@ -44,14 +44,31 @@ classdef Send < matlab.System & matlab.system.mixin.Propagates & ...
 
         function stepImpl(obj,u)
             
+%             % autopilot settings
+%             if u.autopilot.engage && ~obj.AutopilotEngaged
+%                 % set autopilot pitch, heading
+%                 obj.Vessel.auto_pilot.target_pitch_and_heading( ...
+%                     u.autopilot.targetPitch, u.autopilot.targetHeading);
+%                 obj.Vessel.control.throttle = 1; % --- test only ---
+%                 % engage autopilot
+%                 obj.Vessel.auto_pilot.engage();
+%                 obj.AutopilotEngaged = true;
+%                 fprintf('Autopilot engaged\n');
+%             end
+%             
+%             % activate next stage
+%             if u.control.activateNextStage
+%                 obj.activateNextStage();
+%                 fprintf('Next stage activated\n');
+%             end
+            
             % autopilot settings
             if u.autopilot.engage && ~obj.AutopilotEngaged
                 % set autopilot pitch, heading
                 obj.Vessel.auto_pilot.target_pitch_and_heading( ...
                     u.autopilot.targetPitch, u.autopilot.targetHeading);
                 obj.Vessel.control.throttle = 1; % --- test only ---
-                % engage autopilot
-                obj.Vessel.auto_pilot.engage();
+                obj.Vessel.auto_pilot.engage
                 obj.AutopilotEngaged = true;
                 fprintf('Autopilot engaged\n');
             end
@@ -62,16 +79,11 @@ classdef Send < matlab.System & matlab.system.mixin.Propagates & ...
                 fprintf('Next stage activated\n');
             end
             
-        end
+        end % stepImpl
 
         function resetImpl(obj)
             % Initialize / reset discrete-state properties
         end
-        
-%         function releaseImpl(obj)
-%             obj.Conn = [];
-%             obj.Vessel = [];
-%         end
 
         % Backup/restore functions
         
