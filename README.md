@@ -15,5 +15,9 @@ See [this page](erikreinersten.com/python-3-in-matlab) to get MATLAB to understa
 See [this video](https://www.youtube.com/watch?v=RQzWri_K_UY) for kRPC setup instructions.
 
 ## Examples, cool pictures, etc.
-TBD
+
+<p float = "left">
+    <img src="doc/images/sl_demo.png" width ="400" />
+    <img src="doc/images/ksp_demo.png" width="400" />
+</p>
 
