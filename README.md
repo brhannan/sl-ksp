@@ -1,6 +1,8 @@
 # sl-ksp
 Control a rocket in Kerbal Space Program from Simulink.
 
+The ksplib block library provides Simulink blocks that use the kRPC Python API to communicate with KSP.
+
 ## Dependencies
 Kerbal Space Program 1.5.1  
 [krpc 0.4.8](https://krpc.github.io/krpc)  
@@ -16,7 +18,7 @@ See [this video](https://www.youtube.com/watch?v=RQzWri_K_UY) for kRPC setup ins
 ## Examples, cool pictures, etc.
 
 Open Slksp.prj.  
->> kspdemo  
+Open kspdemo.slx.    
 Open KSP and put a rocket on the launch pad.  
 Simulate the model.  
 
