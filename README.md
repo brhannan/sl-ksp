@@ -11,10 +11,14 @@ Python 3.x
 
 
 ## Setup
-See [this page](erikreinersten.com/python-3-in-matlab) to get MATLAB to understand "python3".  
 See [this video](https://www.youtube.com/watch?v=RQzWri_K_UY) for kRPC setup instructions.
 
 ## Examples, cool pictures, etc.
+
+Open Slksp.prj.  
+>> kspdemo  
+Open KSP and put a rocket on the launch pad.  
+Simulate the model.  
 
 <p float = "left">
     <img src="doc/images/sl_demo.png" width ="600" />

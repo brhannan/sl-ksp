@@ -39,25 +39,13 @@ classdef Receive < matlab.System & matlab.system.mixin.Propagates & ...
         end
 
         function u = stepImpl(obj)
-            
             % vessel
             u.vessel.liquidFuelAmt = obj.Vessel.resources.amount('LiquidFuel');
-            
-%             % flight
-%             u.flight.meanAltitude = obj.Vessel.flight().mean_altitude;
-%             u.flight.surfaceAltitude = obj.Vessel.flight().surface_altitude;
-%             u.flight.latitude = obj.Vessel.flight().latitude;
-%             u.flight.longitude = obj.Vessel.flight().longitude;
-            
-%             % vessel
-%             u.vessel.liquidFuelAmt = feval(obj.Vessel.resources.amount,'LiquidFuel');
-            
             % flight
             u.flight.meanAltitude = obj.Vessel.flight().mean_altitude;
             u.flight.surfaceAltitude = obj.Vessel.flight().surface_altitude;
             u.flight.latitude = obj.Vessel.flight().latitude;
             u.flight.longitude = obj.Vessel.flight().longitude;
-            
         end % stepImpl
 
         function resetImpl(obj)
