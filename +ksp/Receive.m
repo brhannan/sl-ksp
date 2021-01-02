@@ -40,12 +40,38 @@ classdef Receive < matlab.System & matlab.system.mixin.Propagates & ...
 
         function u = stepImpl(obj)
             % vessel
-            u.vessel.liquidFuelAmt = obj.Vessel.resources.amount('LiquidFuel');
+            % liquid fuiel
+            try
+                lf = obj.Vessel.resources.amount('LiquidFuel');
+            catch
+                lf = 0;
+            end
+            u.vessel.liquidFuelAmt = lf;
+            % solid fuel
+            sf0 = zeros(4,1); % solid fuel bus elem dims is 4x1
+            try
+                sf = obj.Vessel.resources.amount('SolidFuel');
+            catch
+                sf = zeros(4,1);
+            end
+            if numel(sf) > 4
+                error('ksp:Receive:invaildSolidFuelDims', ...
+                    'ksp.Receive supports up to 4 SRBs.');
+            end
+            sf0(1:numel(sf(:))) = sf;
+            u.vessel.solidFuelAmt = sf0;
             % flight
             u.flight.meanAltitude = obj.Vessel.flight().mean_altitude;
             u.flight.surfaceAltitude = obj.Vessel.flight().surface_altitude;
             u.flight.latitude = obj.Vessel.flight().latitude;
             u.flight.longitude = obj.Vessel.flight().longitude;
+            try
+                vel = obj.Vessel.flight(obj.Vessel.orbit.body.reference_frame).velocity;
+            catch
+                warning('Unable to get velocity.');
+                vel = 0;
+            end
+            u.flight.velocity = vel;
         end % stepImpl
 
         function resetImpl(obj)
@@ -140,10 +166,6 @@ classdef Receive < matlab.System & matlab.system.mixin.Propagates & ...
                     'There is no active KSP connection.');
             end
             obj.Vessel = obj.Conn.space_center.active_vessel;
-        end
-
-        function activateNextStage(obj)
-            obj.Vessel.control.activate_next_stage();
         end
 
     end % methods
