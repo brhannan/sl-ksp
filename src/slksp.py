@@ -5,11 +5,13 @@ class Receive:
     vessel = -1
     flight_info = -1
     # altitude_stream = -1
+    srf_frame = -1
 
     def __init__(self):
         self.conn = krpc.connect()
         self.vessel = self.conn.space_center.active_vessel
         self.flight_info = self.vessel.flight()
+        self.srf_frame = self.vessel.orbit.body.reference_frame
 
     # getters
 
@@ -44,16 +46,17 @@ class Receive:
 
     def get_vel(self):
         '''
-        Get vessel's velocity vector (m/s).
+        Get vessel's velocity vector (m/s) in the surface frame.
         '''
-        return self.flight_info.velocity
+        # return self.flight_info.velocity
+        return self.vessel.flight(self.srf_frame).velocity
 
-    def get_speed(self):
-        '''
-        Get the speed of the vessel in meters per second, in the reference
-        frame ReferenceFrame.
-        '''
-        return self.flight_info.speed
+    # def get_speed(self):
+    #     '''
+    #     Get the speed of the vessel in meters per second, in the reference
+    #     frame ReferenceFrame.
+    #     '''
+    #     return self.flight_info.speed
 
     def get_solid_fuel(self):
         '''
