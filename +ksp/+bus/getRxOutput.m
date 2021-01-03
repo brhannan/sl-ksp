@@ -59,14 +59,9 @@ elems(5).Dimensions = 3;
 elems(5).Description = ['Vessel velocity (m/s) in reference frame ' ...
     'vessel.orbit.body.reference_frame'];
 
-elems(6).Name = 'velocity';
-elems(6).DataType = 'double';
-elems(6).Dimensions = 1;
-elems(6).Description = ['Vessel speed (m/s) in reference frame ' ...
-    'vessel.orbit.body.reference_frame'];
-
 % elems(6).Name = 'speed';
 % elems(6).DataType = 'double';
+% elems(6).Dimensions = 1;
 % elems(6).Description = ['Vessel speed (m/s) in reference frame ' ...
 %     'vessel.orbit.body.reference_frame'];
 
