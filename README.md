@@ -15,7 +15,9 @@ Python 2.7
 ## Setup
 See [this video](https://www.youtube.com/watch?v=RQzWri_K_UY) for kRPC setup instructions.  
 Before first simulation, open MATLAB, open the .prj, and enter the command  
->> ksp.addSrcToPythonPath  
+```
+ksp.addSrcToPythonPath  
+```
 to add the module slksp.py to the Python path.
 
 ## Examples, cool pictures, etc.
