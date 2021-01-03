@@ -17,7 +17,10 @@ elems(1).Description = 'Amount of liquid fuel remaining';
 elems(2).Name = 'solidFuelAmt';
 elems(2).DataType = 'double';
 elems(2).Description = 'Amount of solid fuel remaining';
-elems(2).Dimensions = [4,1];
+
+elems(3).Name = 'met';
+elems(3).DataType = 'double';
+elems(3).Description = 'mission elapsed time (s)';
 
 vesselRx = Simulink.Bus;
 vesselRx.Elements = elems;
@@ -54,6 +57,12 @@ elems(5).Name = 'velocity';
 elems(5).DataType = 'double';
 elems(5).Dimensions = 3;
 elems(5).Description = ['Vessel velocity (m/s) in reference frame ' ...
+    'vessel.orbit.body.reference_frame'];
+
+elems(6).Name = 'velocity';
+elems(6).DataType = 'double';
+elems(6).Dimensions = 1;
+elems(6).Description = ['Vessel speed (m/s) in reference frame ' ...
     'vessel.orbit.body.reference_frame'];
 
 % elems(6).Name = 'speed';

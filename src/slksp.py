@@ -1,22 +1,14 @@
 import krpc
 
-class KerbalRx:
-    # kRPC connection
+class Receive:
     conn = -1
     vessel = -1
     flight_info = -1
     # altitude_stream = -1
 
     def __init__(self):
-        # set up connection and get active vessel
-        # conn0 = krpc.connect()
-        # vessel0 = conn0.space_center.active_vessel
-        # self.conn = conn0
-        # self.vessel = conn0.space_center.active_vessel
-        conn = krpc.connect()
         self.conn = krpc.connect()
-        self.vessel = conn.space_center.active_vessel
-        # set up flight
+        self.vessel = self.conn.space_center.active_vessel
         self.flight_info = self.vessel.flight()
 
     # getters
@@ -62,6 +54,24 @@ class KerbalRx:
         frame ReferenceFrame.
         '''
         return self.flight_info.speed
+
+    def get_solid_fuel(self):
+        '''
+        Get amount of solid fuel remaining.
+        '''
+        return self.vessel.resources.amount('SolidFuel')
+
+    def get_liquid_fuel(self):
+        '''
+        Get amount of liquid fuel remaining.
+        '''
+        return self.vessel.resources.amount('LiquidFuel')
+
+    def get_met(self):
+        '''
+        Get mission elapsed time (sec.).
+        '''
+        return self.vessel.met
 
     # def get_mean_altitude_stream(self):
     #     '''
