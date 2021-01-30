@@ -32,3 +32,6 @@ Simulate the model.
     <img src="doc/images/ksp_demo.png" width="600" />
 </p>
 
+## To do
+- [ ] Refactor TX, RX blocks so that they share one krpc object.
+- [ ] Improve mission planning UI.
