@@ -35,3 +35,4 @@ Simulate the model.
 ## To do
 - [ ] Refactor TX, RX blocks so that they share one krpc object.
 - [ ] Improve mission planning UI.
+- [ ] Reset fuel query at stage separation.
