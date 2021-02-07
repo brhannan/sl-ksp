@@ -90,4 +90,5 @@ class Receive:
     #     '''
     #     create telem stream for mean altitude
     #     '''
-    #     self.altitude_stream = self.conn.add_stream(getattr, self.vessel.flight(), 'mean_altitude')
+    #     self.altitude_stream = self.conn.add_stream(getattr,
+    #       self.vessel.flight(), 'mean_altitude')
