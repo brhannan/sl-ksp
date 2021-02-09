@@ -19,7 +19,7 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
         Vessel
         %InputBusName Input bus
         %   The name of the input bus object.
-        InputBusName = 'toKspIn'
+        InputBusName = 'kspRxIn'
         %OutputBusName Output bus
         %   The name of the output bus object.
         OutputBusName = 'kspRxOut'
@@ -106,6 +106,10 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
 
         function out = getOutputDataTypeImpl(obj)
             out = obj.OutputBusName;
+        end
+        
+        function out = getInputDataTypeImpl(obj)
+            out = obj.InputBusName;
         end
 
     end % protected methods
