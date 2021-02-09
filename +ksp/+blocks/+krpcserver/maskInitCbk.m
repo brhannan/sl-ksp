@@ -1,5 +1,5 @@
 function maskInitCbk(sys)
-%KSP.BLOCKS.KRPSERVER.MASKINITCBK KRPCServer blok mask initialization callback
+%KSP.BLOCKS.KRPSERVER.MASKINITCBK KRPCServer block mask initialization callback
 
 validateattributes(sys,{'char'},{})
 

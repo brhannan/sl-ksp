@@ -26,6 +26,7 @@ Open Slksp.prj.
 Open kspdemo.slx.    
 Open KSP and put a rocket on the launch pad.  
 Simulate the model.  
+Press launch.  
 
 <p float = "left">
     <img src="doc/images/sl_demo.png" width ="600" />
