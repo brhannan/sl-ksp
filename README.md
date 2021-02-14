@@ -62,7 +62,7 @@ If the kRPC server window does not appear in the KSP window, select the
 icon marked in the image below. Select start server.  
 <p float = "left">
     <img src="doc/images/start-krpc-server-menu.png" width = "300"/>
-</p> 
+</p>
 Simulate the model. Check the KSP window and accept the kRPC connection 
 request if a kRPC prompt appears.  
 Press launch.  
@@ -73,7 +73,7 @@ Press launch.
 </p>
 
 ## To do
-- [ ] Refactor TX, RX blocks so that they share one krpc object.
+- [x] Refactor TX, RX blocks so that they share one krpc object.
 - [ ] Improve mission planning UI.
 - [ ] Reset fuel query at stage separation.
 - [ ] Package as toolbox.
