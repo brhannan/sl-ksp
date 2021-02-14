@@ -62,8 +62,8 @@ To run the example model:
 - If the kRPC server window does not appear in the KSP window, select the 
 icon marked in the image below. 
 - Press the Start server button.  
-<p float = "left">
 
+<p float = "left">
     <img src="doc/images/start-krpc-server-menu.png" width = "300"/>
 </p>
 
