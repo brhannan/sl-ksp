@@ -1,7 +1,7 @@
 function slkspPrjStart()
 %SLKSPPRJSTART sl-ksp project startup tasks
 
-mdl = 'slkspdemo';
+mdl = 'kspdemo';
 open_system(mdl)
 
 end

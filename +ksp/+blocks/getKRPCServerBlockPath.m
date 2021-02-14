@@ -10,10 +10,10 @@ if ~bdIsLoaded(sys)
     error('ksp:blocks:getKRPCServerBlockPath:systemNotLoaded', ...
         'System "%s" is not loaded.',sys);
 end
-if bdIsLibrary(sys)
-    error('ksp:blocks:getKRPCServerBlockPath:systemNotMdl', ...
-        'System "%s" is not a model file.',sys);
-end
+% if bdIsLibrary(sys)
+%     error('ksp:blocks:getKRPCServerBlockPath:systemNotMdl', ...
+%         'System "%s" is not a model file.',sys);
+% end
 
 blks = find_system(sys,'MaskType','KRPCServer');
 

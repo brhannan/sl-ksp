@@ -1,18 +1,22 @@
 classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
         matlab.system.mixin.CustomIcon
-    %KSP.SLKSPMessenger Use krpc to send messages to/from KSP.
-    %   K = KSP.SLKSPMESSENGER creates a new KSP.SLKSPMESSENGER System object.
-    %   KSP.SLKSPMESSENGER transmits commands to/from an instance of Kerbal
-    %   Space Program.
+    %KSP.SLKSPMessenger communicate with Kerbal Space Program.
+    %   K = KSP.SLKSPMESSENGER creates a new KSP.SLKSPMESSENGER System 
+    %   object. KSP.SLKSPMESSENGER uses kRPC to transmit commands to/from 
+    %   an instance of Kerbal Space Program.
+    %
+    %   See https://krpc.github.io/krpc/.
+    
+    % The SLKSPMessenger System object uses the SLKSPMessenger class 
+    % defined in src/slksp.py to communicate with the kRPC server.
 
     %#codegen
     %#ok<*EMCA>
 
     properties(Hidden,Nontunable)
-        %Conn kRPC connection object
-        %   Conn is the krpc.connection.Connection object returned by
-        %   krpc.connect().
-        Conn
+        %SLKSPComm slksp.SLKSPMessenger
+        %   KSPComm is a SLKSPMessenger object.
+        SLKSPComm
         %Vessel Vessel object
         %   Vessel is the SpaceCenter.Vessel object returned by
         %   SpaceCenter.active_vessel().
@@ -33,12 +37,13 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
     % --------------------------------------------------------------------------
 
     properties(Access=protected)
+        % autopilot state
         AutopilotEngaged = false;
     end
 
     methods
         % Constructor
-        function obj = Send(varargin)
+        function obj = SLKSPMessenger(varargin)
             % Support name-value pair arguments when constructing object
             setProperties(obj,nargin,varargin{:})
         end
@@ -49,15 +54,68 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
         % Common functions
 
         function setupImpl(obj)
-            % obj.connect();
+            obj.connect();
 
-            % get out bus struct (for dev test only) ---------------------------
-            obj.OutputBusStruct = ksp.bus.getFromKSPBus();
-            % ------------------------------------------------------------------
+%             % get out bus struct (for dev test only) ---------------------------
+%             obj.OutputBusStruct = ksp.bus.getFromKSPBus();
+%             % ------------------------------------------------------------------
         end
 
         function y = stepImpl(obj,u)
-            y = obj.OutputBusStruct;
+            
+            %--- receive ---
+            
+            % vessel
+            y.vessel.liquidFuelAmt = obj.SLKSPComm.get_liquid_fuel();
+            y.vessel.solidFuelAmt = obj.SLKSPComm.get_solid_fuel();
+            y.vessel.met = obj.SLKSPComm.get_met();
+            % flight
+            y.flight.meanAltitude = obj.SLKSPComm.get_mean_altitude();
+            y.flight.surfaceAltitude = obj.SLKSPComm.get_surface_altitude();
+            y.flight.latitude = obj.SLKSPComm.get_lat();
+            y.flight.longitude = obj.SLKSPComm.get_lon();
+            % get velocity vector, convert tuple to array
+            vtup = obj.SLKSPComm.get_vel();
+            vel = cell2mat(cell(vtup));
+            y.flight.velocity = vel;
+            
+            %--- send ---
+            
+%             % autopilot settings
+%             if u.autopilot.engage && ~obj.AutopilotEngaged
+%                 % set autopilot pitch, heading
+%                 obj.Vessel.auto_pilot.target_pitch_and_heading( ...
+%                     u.autopilot.targetPitch, u.autopilot.targetHeading);
+%                 obj.Vessel.control.throttle = 1; % --- test only ---
+%                 % engage autopilot
+%                 obj.Vessel.auto_pilot.engage();
+%                 obj.AutopilotEngaged = true;
+%                 fprintf('Autopilot engaged\n');
+%             end
+%
+%             % activate next stage
+%             if u.control.activateNextStage
+%                 obj.activateNextStage();
+%                 fprintf('Next stage activated\n');
+%             end
+
+            % autopilot settings
+            if u.autopilot.engage && ~obj.AutopilotEngaged
+                % set autopilot pitch, heading
+                obj.SLKSPComm.set_pitch_and_heading( ...
+                    u.autopilot.targetPitch, u.autopilot.targetHeading);
+                obj.SLKSPComm.set_throttle(1); % --- TODO: allow user to set this val ---
+                obj.SLKSPComm.engage_autopilot;
+                obj.AutopilotEngaged = true;
+                fprintf('Autopilot engaged.\n');
+            end
+
+            % activate next stage
+            if u.control.activateNextStage
+                obj.SLKSPComm.activate_next_stage();
+                fprintf('Next stage activated.\n');
+            end
+            
         end % stepImpl
 
         function resetImpl(obj)
@@ -134,7 +192,7 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
 
         function connect(obj)
             % connect to KSP via kRPC
-            obj.Conn = py.slksp.SLKSPMessenger();
+            obj.SLKSPComm = py.slksp.SLKSPMessenger();
         end
 
     end % methods

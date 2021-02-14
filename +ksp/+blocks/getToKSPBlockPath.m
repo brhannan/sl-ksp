@@ -9,10 +9,12 @@ if ~bdIsLoaded(sys)
     error('ksp:blocks:getToKSPBlockPath:systemNotLoaded', ...
         'System "%s" is not loaded.',sys);
 end
-if bdIsLibrary(sys)
-    error('ksp:blocks:getToKSPBlockPath:systemNotMdl', ...
-        'System "%s" is not a model file.',sys);
-end
+
+% % lines below commented b/c gives annoying error when lib file is edited
+% if bdIsLibrary(sys)
+%     error('ksp:blocks:getToKSPBlockPath:systemNotMdl', ...
+%         'System "%s" is not a model file.',sys);
+% end
 
 blks = find_system(sys,'MaskType','ToKSP');
 
