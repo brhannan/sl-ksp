@@ -20,10 +20,10 @@ Follow the kRPC setup instructions given in this video:
 
 Basically, the steps in the video above are (assuming you already have 
 Python 3 up and running):  
-Install KSP v1.5.1 using steam (right-click Kerbal Space Program, go to 
+- Install KSP v1.5.1 using steam (right-click Kerbal Space Program, go to 
 Properties -> Betas).  
-Download (kRPC)[https://spacedock.info/mod/69/kRPC].  
-Copy the kRPC folder from this download to the KSP GameData folder (find 
+- Download the KSP [kRPC mod](https://spacedock.info/mod/69/kRPC).  
+- Copy the kRPC folder from this download to the KSP GameData folder (find 
 it by right-clicking Kerbal Space Program in Steam and go to Manage -> 
 Browse local files).  
 
@@ -56,14 +56,15 @@ to add the module at /src/slksp.py to sys.path.
 
 ## Examples, cool pictures, etc.
 
-Open Slksp.prj.  
-Open KSP and put a rocket on the launch pad. 
-If the kRPC server window does not appear in the KSP window, select the 
+To run the example model:
+- Open Slksp.prj.  
+- Open KSP and put a rocket on the launch pad. 
+- If the kRPC server window does not appear in the KSP window, select the 
 icon marked in the image below. Select start server.  
 <p float = "left">
     <img src="doc/images/start-krpc-server-menu.png" width = "300"/>
 </p>
-Simulate the model. Check the KSP window and accept the kRPC connection 
+- Simulate the model. Check the KSP window and accept the kRPC connection 
 request if a kRPC prompt appears.  
 Press launch.  
 
