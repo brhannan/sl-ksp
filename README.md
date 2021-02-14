@@ -60,13 +60,16 @@ To run the example model:
 - Open Slksp.prj.  
 - Open KSP and put a rocket on the launch pad. 
 - If the kRPC server window does not appear in the KSP window, select the 
-icon marked in the image below. Select start server.  
+icon marked in the image below. 
+- Press the Start server button.  
 <p float = "left">
+
     <img src="doc/images/start-krpc-server-menu.png" width = "300"/>
 </p>
-- Simulate the model. Check the KSP window and accept the kRPC connection 
-request if a kRPC prompt appears.  
-Press launch.  
+
+- Simulate the model. (Check the KSP window and accept the kRPC connection 
+request if a kRPC prompt appears.)  
+- Press the Launch button in the Simulink model.  
 
 <p float = "left">
     <img src="doc/images/sl_demo.png" width ="600" />
