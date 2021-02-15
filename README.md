@@ -4,6 +4,11 @@ Control a rocket in Kerbal Space Program from Simulink.
 The ksplib block library provides Simulink blocks that use the kRPC Python 
 API to communicate with KSP.
 
+The goal of this project is to allow for controls and optical navigation 
+algorithms (which may be written in MATLAB, Python, C, C++, or Simulink) 
+to be tested in Kerbal Space Program, which provides the physics-based 
+simulation and generates images.
+
 ## Dependencies
 Kerbal Space Program 1.5.1 (see kRPC setup video linked below)  
 [krpc 0.4.8](https://krpc.github.io/krpc)  
