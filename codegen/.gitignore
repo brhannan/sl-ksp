@@ -1,0 +1,4 @@
+# ignore everything in this dir
+*
+# except for this file
+!.gitingore
