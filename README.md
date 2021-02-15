@@ -14,6 +14,8 @@ Python 3.x
 
 
 ## Setup
+
+### kRPC setup
 Follow the kRPC setup instructions given in this video: 
 [OS X](https://www.youtube.com/watch?v=x6wdnge-hZU&t=0s), 
 [PC](https://www.youtube.com/watch?v=RQzWri_K_UY).  
@@ -27,7 +29,8 @@ Properties -> Betas).
 it by right-clicking Kerbal Space Program in Steam and go to Manage -> 
 Browse local files).  
 
-Make sure that MATLAB is using the right python path. Open MATLAB and 
+### MATLAB Python path
+Make sure that MATLAB is using the right Python path. Open MATLAB and 
 enter the command  
 ```
 pyenv
@@ -40,13 +43,14 @@ python3
 import sys
 sys.executable
 ```
-Copy the path that is printed (for example '<...>/usr/bin/python3').  
+Copy the path that is printed (for example, mine looks something like '<...>/usr/bin/python3').  
 Go back to MATLAB and enter the command  
 ```
 pyversion('<...>/user/bin/python3')  
 ```
 where the pyversion() input argument is the `sys.executable` output.
 
+### Project setup
 Open MATLAB, double-click on Slksp.prj in the Current Folder window, and 
 enter the command  
 ```
