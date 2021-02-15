@@ -1,0 +1,5 @@
+# ignore everything in this dir
+# this allows committing empty /cache dir
+*
+# except for this file
+!.gitignore
