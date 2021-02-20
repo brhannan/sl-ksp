@@ -12,6 +12,7 @@ algorithms (which may be written in MATLAB, Python, C, C++, or Simulink)
 to be tested in Kerbal Space Program, which provides the physics-based
 simulation and generates images.
 
+
 ## Dependencies
 Kerbal Space Program 1.5.1
 [kRPC 0.4.8](https://krpc.github.io/krpc)  
@@ -68,6 +69,7 @@ enter the command
 ksp.addSrcToPythonPath  
 ```
 to add the module at /src/slksp.py to sys.path.
+
 
 ## How to run the example model
 
