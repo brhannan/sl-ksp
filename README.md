@@ -13,8 +13,8 @@ to be tested in Kerbal Space Program, which provides the physics-based
 simulation and generates images.
 
 ## Dependencies
-Kerbal Space Program 1.5.1 (see kRPC setup video linked below)  
-[krpc 0.4.8](https://krpc.github.io/krpc)  
+Kerbal Space Program 1.5.1
+[kRPC 0.4.8](https://krpc.github.io/krpc)  
 MATLAB R2020b  
 Simulink  
 Stateflow  
@@ -44,18 +44,20 @@ enter the command
 pyenv
 ```
 This will tell you which Python version you're using.
-I needed to tell MATLAB to use Python 3.8 by doing the following.  
-Open a terminal and identify the path to my python3:
+If the command above does not indicate that MATLAB is using Python 3, fix that
+by doing the following.
+
+Open a terminal and identify the path to my python3:  
 ```
 python3
 import sys
 sys.executable
 ```
-Copy the path that is printed (for example, mine looks something like
-'<...>/usr/bin/python3').  
+Copy the path that is printed (for example, let's say it is
+'usr/bin/python3').  
 Go back to MATLAB and enter the command  
 ```
-pyversion('<...>/user/bin/python3')  
+pyversion('user/bin/python3')  
 ```
 where the pyversion() input argument is the `sys.executable` output.
 
