@@ -14,7 +14,7 @@ simulation and generates images.
 
 
 ## Dependencies
-Kerbal Space Program 1.5.1
+Kerbal Space Program 1.5.1  
 [kRPC 0.4.8](https://krpc.github.io/krpc)  
 MATLAB R2020b  
 Simulink  
