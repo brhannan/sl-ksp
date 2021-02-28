@@ -91,6 +91,4 @@ appears.
 ## To do
 - [x] Refactor TX, RX blocks so that they share one kRPC object.
 - [ ] Retrieve images from KSP to use for navigation.
-- [ ] Improve mission planning UI.
-- [ ] Reset fuel query at stage separation.
 - [ ] Package as toolbox.

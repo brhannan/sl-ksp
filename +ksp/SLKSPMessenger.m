@@ -10,9 +10,6 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
     % The SLKSPMessenger System object uses the SLKSPMessenger class 
     % defined in src/slksp.py to communicate with the kRPC server.
 
-    %#codegen
-    %#ok<*EMCA>
-
     properties(Hidden,Nontunable)
         %SLKSPComm slksp.SLKSPMessenger
         %   KSPComm is a SLKSPMessenger object.
@@ -54,11 +51,8 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
         % Common functions
 
         function setupImpl(obj)
+            % connect to KSP
             obj.connect();
-
-%             % get out bus struct (for dev test only) ---------------------------
-%             obj.OutputBusStruct = ksp.bus.getFromKSPBus();
-%             % ------------------------------------------------------------------
         end
 
         function y = stepImpl(obj,u)
@@ -80,24 +74,6 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
             y.flight.velocity = vel;
             
             %--- send ---
-            
-%             % autopilot settings
-%             if u.autopilot.engage && ~obj.AutopilotEngaged
-%                 % set autopilot pitch, heading
-%                 obj.Vessel.auto_pilot.target_pitch_and_heading( ...
-%                     u.autopilot.targetPitch, u.autopilot.targetHeading);
-%                 obj.Vessel.control.throttle = 1; % --- test only ---
-%                 % engage autopilot
-%                 obj.Vessel.auto_pilot.engage();
-%                 obj.AutopilotEngaged = true;
-%                 fprintf('Autopilot engaged\n');
-%             end
-%
-%             % activate next stage
-%             if u.control.activateNextStage
-%                 obj.activateNextStage();
-%                 fprintf('Next stage activated\n');
-%             end
 
             % autopilot settings
             if u.autopilot.engage && ~obj.AutopilotEngaged
@@ -126,21 +102,11 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
 
         function s = saveObjectImpl(obj)
             % Set properties in structure s to values in object obj
-
-            % Set public properties and states
             s = saveObjectImpl@matlab.System(obj);
-
-            % Set private and protected properties
-            % s.myproperty = obj.myproperty;
         end
 
         function loadObjectImpl(obj,s,wasLocked)
             % Set properties in object obj to values in structure s
-
-            % Set private and protected properties
-            % obj.myproperty = s.myproperty;
-
-            % Set public properties and states
             loadObjectImpl@matlab.System(obj,s,wasLocked);
         end
 
@@ -152,8 +118,7 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
         end
 
         function flag = isInputSizeMutableImpl(obj,index)
-            % Return false if input size cannot change
-            % between calls to the System object
+            % Return false if input size cannot change between calls
             flag = false;
         end
 
@@ -197,4 +162,4 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
 
     end % methods
 
-end
+end % SLKSPMessenger
