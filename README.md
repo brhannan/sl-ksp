@@ -48,9 +48,9 @@ Browse local files).
 ### MATLAB Python path
 
 See 
-(this doc page)
-[https://www.mathworks.com/help/matlab/matlab_external/
-get-started-with-matlab-engine-for-python.html]. 
+[this doc page]
+(https://www.mathworks.com/help/matlab/matlab_external/
+get-started-with-matlab-engine-for-python.html). 
 
 Follow the instructions on this page to get MATLAB and Python talking to 
 each other.  Open MATLAB and enter the command 
