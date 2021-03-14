@@ -16,6 +16,11 @@ The goal of this project is to allow for controls and optical navigation
 algorithms (which may be written in MATLAB, Python, C, C++, or Simulink)
 to be tested in Kerbal Space Program.
 
+This provides
+- multidomain simulation capabilities
+- cool visuals
+- interesting engineering analyses for KSP missions.
+
 ## Dependencies
 Kerbal Space Program 1.5.1  
 [kRPC 0.4.8](https://krpc.github.io/krpc)  
@@ -28,8 +33,12 @@ Stateflow (required to simulate example models)
 ## Setup
 
 ### KSP Toolbox setup
-Download the toolbox installer at /release/KSPToolbox.mltbx to any location on your machine.  
-Double-click this file to install KSP Toolbox.  
+- Download the toolbox installer at 
+[/release/KSPToolbox.mltbx](https://github.com/brhannan/sl-ksp/tree/main/release) 
+to any location on your machine.  
+- Open MATLAB and navigate to KSPToolbox.mltbx.  
+- Double-click KSPToolbox.mltbx in the MATLAB Current Folder window to 
+install KSP Toolbox.  
 
 ### kRPC setup
 Follow the kRPC setup instructions given in this video:
@@ -75,9 +84,10 @@ icon marked in the image below.
 - Check the KSP window. Accept the kRPC connection request if a kRPC prompt
 appears.  
 - Press the Launch button in the Simulink model.  
-- Watch the altimeter climb. Takeoff is automated, landing is left as an exercise for the reader. (Note to self: add lander logic.)  
+- Watch the altimeter climb. Landing is left as an exercise for the reader. 
+(Note to self: add lander logic.)  
 
 ## To do
 - [x] Refactor TX, RX blocks so that they share one kRPC object.
-- [ ] Retrieve images from KSP to use for navigation.
-- [ ] Package as toolbox.
+- [ ] Add image capture tools for optical nav simulation.
+- [x] Package as toolbox.
