@@ -18,7 +18,7 @@ to be tested in Kerbal Space Program.
 
 This provides
 - multidomain simulation capabilities
-- cool visuals
+- the coolest flight simulation visualizations you're ever going to get out of Simulink
 - interesting engineering analyses for KSP missions.
 
 ## Dependencies
@@ -86,6 +86,7 @@ appears.
 - Press the Launch button in the Simulink model.  
 - Watch the altimeter climb. Landing is left as an exercise for the reader. 
 (Note to self: add lander logic.)  
+
 
 ## To do
 - [x] Refactor TX, RX blocks so that they share one kRPC object.
