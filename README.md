@@ -48,18 +48,22 @@ Browse local files).
 ### MATLAB Python path
 
 See 
-[https://www.mathworks.com/help/matlab/matlab_external/get-started-with-matlab-engine-for-python.html](this doc page). 
+(this doc page)
+[https://www.mathworks.com/help/matlab/matlab_external/
+get-started-with-matlab-engine-for-python.html]. 
 
-Follow the instructions on this page to get MATLAB and Python talking to each other.  
-Open MATLAB and enter the command ```py.print("hello world")``` in the Command Window to 
-confirm that the setup was successful. 
+Follow the instructions on this page to get MATLAB and Python talking to 
+each other.  Open MATLAB and enter the command 
+```py.print("hello world")``` in the Command Window to confirm that the 
+setup was successful. 
 
-The KSP Toolbox Simulink blocks are fundamentally written in Python, so make sure that MATLAB and Python are on speaking terms before proceeding.
+The KSP Toolbox Simulink blocks are fundamentally written in Python, so 
+make sure that MATLAB and Python are on speaking terms before proceeding.
 
 
 ## Run the example model
 
-- Open example project Slksp.prj using the command ```ksp.loadSuborbitalFlightExample```  
+- Open example project Slksp.prj using the MATLAB command ```ksp.loadSuborbitalFlightExample```  
 - Open KSP and put a rocket on the launch pad.
 - If the kRPC server window does not appear in the KSP window, select the
 icon marked in the image below.
