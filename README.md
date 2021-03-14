@@ -48,11 +48,13 @@ Browse local files).
 ### MATLAB Python path
 
 See 
-(https://www.mathworks.com/help/matlab/matlab_external/get-started-with-matlab-engine-for-python.html)[this doc page]. 
+[https://www.mathworks.com/help/matlab/matlab_external/get-started-with-matlab-engine-for-python.html](this doc page). 
+
 Follow the instructions on this page to get MATLAB and Python talking to each other.  
 Open MATLAB and enter the command ```py.print("hello world")``` in the Command Window to 
-confirm that the setup was successful. The KSP Toolbox Simulink blocks are fundamentally 
-written in Python, so make sure that MATLAB and Python are on speaking terms before proceeding.
+confirm that the setup was successful. 
+
+The KSP Toolbox Simulink blocks are fundamentally written in Python, so make sure that MATLAB and Python are on speaking terms before proceeding.
 
 
 ## Run the example model
