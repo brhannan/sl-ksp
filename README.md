@@ -10,7 +10,7 @@ KSP Toolbox provides Simulink blocks that allow Simulink to to communicate with 
 
 ## Highlights
 
-KSP Toolbox provices Simulink / Kerbal Space Program cosimulation.
+KSP Toolbox provides Simulink / Kerbal Space Program cosimulation.
 
 The goal of this project is to allow for controls and optical navigation
 algorithms (which may be written in MATLAB, Python, C, C++, or Simulink)
@@ -85,7 +85,22 @@ icon marked in the image below.
 appears.  
 - Press the Launch button in the Simulink model.  
 - Watch the altimeter climb. Landing is left as an exercise for the reader. 
-(Note to self: add lander logic.)  
+(Note to self: add lander logic.) 
+
+
+## Creating custom models with KSP Toolbox blocks
+
+Follow the steps below to create a new model using KSP Toolbox blocks.
+- Create a new Simulink model.
+- Select a fixed-step solver. The example model uses a solver step size of 0.1.
+- Enter the command ```ksplib``` to open the KSP Toolbox library.
+- Copy a KSPServer block, a ToKSP block, and a FromKSP block to the model.
+- The To/FromKSP blocks input/output specific bus objects. Create these 
+bus objects using the 
+```[kspTxIn,control,autopilot] = ksp.bus.getTxInput()``` 
+and 
+```[kspRxOut,vesselRx,flight] = ksp.bus.getRxOutput()``` 
+commands. See the command-line help of each function for more info.
 
 
 ## To do
