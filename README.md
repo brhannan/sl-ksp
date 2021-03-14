@@ -1,28 +1,35 @@
-# sl-ksp
+# KSP Toolbox
 Control a rocket in Kerbal Space Program from Simulink.
 
-This block library provides Simulink blocks that use kRPC to communicate with KSP.
+KSP Toolbox provides Simulink blocks that allow Simulink to to communicate with KSP.
 
 <p float = "left">
     <img src="doc/images/slkspsidebyside.png" width = "800"/>
 </p>
 
+
+## Highlights
+
+KSP Toolbox provices Simulink / Kerbal Space Program cosimulation.
+
 The goal of this project is to allow for controls and optical navigation
 algorithms (which may be written in MATLAB, Python, C, C++, or Simulink)
-to be tested in Kerbal Space Program, which provides the physics-based
-simulation and generates images.
-
+to be tested in Kerbal Space Program.
 
 ## Dependencies
 Kerbal Space Program 1.5.1  
 [kRPC 0.4.8](https://krpc.github.io/krpc)  
 MATLAB R2020b  
-Simulink  
-Stateflow  
-Python 3.x
+Simulink    
+Python 3.x  
+Stateflow (required to simulate example models)
 
 
 ## Setup
+
+### KSP Toolbox setup
+Download the toolbox installer at /release/KSPToolbox.mltbx to any location on your machine.  
+Double-click this file to install KSP Toolbox.  
 
 ### kRPC setup
 Follow the kRPC setup instructions given in this video:
@@ -39,41 +46,18 @@ it by right-clicking Kerbal Space Program in Steam and go to Manage ->
 Browse local files).  
 
 ### MATLAB Python path
-Make sure that MATLAB is using the right Python path. Open MATLAB and
-enter the command  
-```
-pyenv
-```
-This will tell you which Python version you're using.
-If the command above does not indicate that MATLAB is using Python 3, fix that
-by doing the following.
 
-Open a terminal and identify the path to my python3:  
-```
-python3
-import sys
-sys.executable
-```
-Copy the path that is printed (for example, let's say it is
-'usr/bin/python3').  
-Go back to MATLAB and enter the command  
-```
-pyversion('user/bin/python3')  
-```
-where the pyversion() input argument is the `sys.executable` output.
-
-### Project setup
-Open MATLAB, double-click on Slksp.prj in the Current Folder window, and
-enter the command  
-```
-ksp.addSrcToPythonPath  
-```
-to add the module at /src/slksp.py to sys.path.
+See 
+(https://www.mathworks.com/help/matlab/matlab_external/get-started-with-matlab-engine-for-python.html)[this doc page]. 
+Follow the instructions on this page to get MATLAB and Python talking to each other.  
+Open MATLAB and enter the command ```py.print("hello world")``` in the Command Window to 
+confirm that the setup was successful. The KSP Toolbox Simulink blocks are fundamentally 
+written in Python, so make sure that MATLAB and Python are on speaking terms before proceeding.
 
 
-## How to run the example model
+## Run the example model
 
-- Open Slksp.prj.  
+- Open example project Slksp.prj using the command ```ksp.loadSuborbitalFlightExample```  
 - Open KSP and put a rocket on the launch pad.
 - If the kRPC server window does not appear in the KSP window, select the
 icon marked in the image below.
@@ -86,7 +70,8 @@ icon marked in the image below.
 - Simulate the model.
 - Check the KSP window. Accept the kRPC connection request if a kRPC prompt
 appears.  
-- Press the Launch button in the Simulink model.
+- Press the Launch button in the Simulink model.  
+- Watch the altimeter climb. Takeoff is automated, landing is left as an exercise for the reader. (Note to self: add lander logic.)  
 
 ## To do
 - [x] Refactor TX, RX blocks so that they share one kRPC object.
