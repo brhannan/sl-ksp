@@ -32,11 +32,11 @@ Stateflow (required to simulate example models)
 
 ## Setup
 
-### KSP Toolbox setup
+### Install KSP Toolbox
 - Download the toolbox installer at 
 [/release/KSPToolbox.mltbx](https://github.com/brhannan/sl-ksp/tree/main/release) 
 to any location on your machine.  
-- Open MATLAB and navigate to KSPToolbox.mltbx.  
+- Open MATLAB and navigate to the folder that KSPToolbox.mltbx was downloaded to.  
 - Double-click KSPToolbox.mltbx in the MATLAB Current Folder window to 
 install KSP Toolbox.  
 
@@ -60,8 +60,7 @@ See
 [this doc page](https://www.mathworks.com/help/matlab/matlab_external/get-started-with-matlab-engine-for-python.html) 
 for instructions that will allow you to use Python commands in MATLAB.
 
-Follow the instructions on the page above to get MATLAB and Python talking to 
-each other.  Open MATLAB and enter the command 
+Open MATLAB and enter the command 
 ```py.print("hello world")``` in the Command Window to confirm that the 
 setup was successful. 
 
@@ -72,10 +71,10 @@ make sure that MATLAB and Python are on speaking terms before proceeding.
 ## Run the example model
 
 - Open an example project using the MATLAB command ```ksp.loadSuborbitalFlightExample```  
-- Now open KSP and put a rocket on the launch pad.
-- If the kRPC server window does not appear in the KSP window, select the
-button shown by the red arrow in the image below.
-- Press the Start server button.  
+- Open KSP and put any rocket on the pad.  
+- If the kRPC server window doesn't automatically appear in the KSP window, 
+select the button shown by the red arrow in the image below. Press the 
+Start server button.  
 
 <p float = "left">
     <img src="doc/images/start-krpc-server-menu.png" width = "300"/>
@@ -85,8 +84,7 @@ button shown by the red arrow in the image below.
 - Check the KSP window. Accept the kRPC connection request if a kRPC prompt
 appears.  
 - Go back to the Simulink window and press the Launch button.  
-- Watch the altimeter climb.  
-- Landing is left as an exercise for the reader.  
+- Watch the altimeter climb. Landing is left as an exercise for the reader.  
 
 
 ## Creating custom models with KSP Toolbox blocks
@@ -107,4 +105,7 @@ commands. See the command-line help of each function for more info.
 ## To do
 - [x] Refactor TX, RX blocks so that they share one kRPC object.
 - [x] Package as toolbox.
+- [ ] Add to the list of signals obtained from KSP in bus kspRxOut.
+- [ ] Add test suite.
+- [ ] Add HTML block documentation.
 - [ ] Add image capture tools for optical nav simulation.
