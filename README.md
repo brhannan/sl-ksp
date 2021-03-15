@@ -64,7 +64,7 @@ Open MATLAB and enter the command
 ```py.print("hello world")``` in the Command Window to confirm that the 
 setup was successful. 
 
-The KSP Toolbox Simulink blocks Python commands use the kRPC Python API, so 
+The KSP Toolbox Simulink blocks use the Python kRPC API, so 
 make sure that MATLAB and Python are on speaking terms before proceeding.
 
 
