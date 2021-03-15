@@ -18,8 +18,8 @@ to be tested in Kerbal Space Program.
 
 This provides
 - multidomain simulation capabilities
-- the coolest flight simulation visualizations you're ever going to get out of Simulink
-- interesting engineering analyses for KSP missions.
+- the coolest flight simulation visualization capabilities period
+- and interesting engineering analyses for KSP missions.
 
 ## Dependencies
 Kerbal Space Program 1.5.1  
@@ -57,23 +57,24 @@ Browse local files).
 ### MATLAB Python path
 
 See 
-[this doc page](https://www.mathworks.com/help/matlab/matlab_external/get-started-with-matlab-engine-for-python.html). 
+[this doc page](https://www.mathworks.com/help/matlab/matlab_external/get-started-with-matlab-engine-for-python.html) 
+for instructions that will allow you to use Python commands in MATLAB.
 
-Follow the instructions on this page to get MATLAB and Python talking to 
+Follow the instructions on the page above to get MATLAB and Python talking to 
 each other.  Open MATLAB and enter the command 
 ```py.print("hello world")``` in the Command Window to confirm that the 
 setup was successful. 
 
-The KSP Toolbox Simulink blocks are fundamentally written in Python, so 
+The KSP Toolbox Simulink blocks Python commands use the KRP Python API, so 
 make sure that MATLAB and Python are on speaking terms before proceeding.
 
 
 ## Run the example model
 
-- Open example project Slksp.prj using the MATLAB command ```ksp.loadSuborbitalFlightExample```  
-- Open KSP and put a rocket on the launch pad.
+- Open an example project using the MATLAB command ```ksp.loadSuborbitalFlightExample```  
+- Now open KSP and put a rocket on the launch pad.
 - If the kRPC server window does not appear in the KSP window, select the
-icon marked in the image below.
+button shown by the red arrow in the image below.
 - Press the Start server button.  
 
 <p float = "left">
@@ -83,9 +84,9 @@ icon marked in the image below.
 - Simulate the model.
 - Check the KSP window. Accept the kRPC connection request if a kRPC prompt
 appears.  
-- Press the Launch button in the Simulink model.  
-- Watch the altimeter climb. Landing is left as an exercise for the reader. 
-(Note to self: add lander logic.) 
+- Go back to the Simulink window and press the Launch button.  
+- Watch the altimeter climb.  
+- Landing is left as an exercise for the reader.  
 
 
 ## Creating custom models with KSP Toolbox blocks
@@ -95,7 +96,7 @@ Follow the steps below to create a new model using KSP Toolbox blocks.
 - Select a fixed-step solver. The example model uses a solver step size of 0.1.
 - Enter the command ```ksplib``` to open the KSP Toolbox library.
 - Copy a KSPServer block, a ToKSP block, and a FromKSP block to the model.
-- The To/FromKSP blocks input/output specific bus objects. Create these 
+- The ToKSP and FromKSP blocks require specific bus objects. Create these 
 bus objects using the 
 ```[kspTxIn,control,autopilot] = ksp.bus.getTxInput()``` 
 and 
@@ -105,5 +106,5 @@ commands. See the command-line help of each function for more info.
 
 ## To do
 - [x] Refactor TX, RX blocks so that they share one kRPC object.
-- [ ] Add image capture tools for optical nav simulation.
 - [x] Package as toolbox.
+- [ ] Add image capture tools for optical nav simulation.
