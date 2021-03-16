@@ -41,7 +41,7 @@ to any location on your machine.
 install KSP Toolbox.  
 
 
-### Get krpc
+### Install the kprc Python module
 Install krpc with ```pip install krpc```  
 See full instructions 
 [here](https://krpc.github.io/krpc/getting-started.html).
@@ -116,7 +116,8 @@ try the following.
 - Enter the command ```ksp.addSrcToPythonPath``` and simulate again.
 - Enter the command ```ver``` and ensure that KSP Toolbox is on the list 
 of installed products. If it isn't, see the install steps above.
-- See this doc page for debugging steps.
+- See [this doc page](https://www.mathworks.com/help/matlab/matlab_external/undefined-variable-py-or-function-py-command.html) 
+for debugging steps.
 - Check that you are able to import krpc in a Python prompt (not MATLAB). 
 If this doesn't work, see the kRPC installation link above.
 
