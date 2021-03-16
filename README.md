@@ -42,7 +42,7 @@ install KSP Toolbox.
 
 
 ### Get krpc
-Install krpc with ````pip install krpc```  
+Install krpc with ```pip install krpc```  
 See full instructions 
 [here](https://krpc.github.io/krpc/getting-started.html).
 
@@ -92,7 +92,7 @@ appears.
 - Go back to the Simulink window and press the Launch button.  
 - Watch the altimeter climb. Landing is left as an exercise for the reader.  
 
-![](https://github.com/brhannan/sl-ksp/tree/main/doc/images/ksplaunchdemo.gif)
+![](https://github.com/brhannan/sl-ksp/blob/main/doc/images/ksplaunchdemo.gif)
 
 ## Creating custom models with KSP Toolbox blocks
 
