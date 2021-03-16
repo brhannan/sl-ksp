@@ -26,13 +26,6 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
         OutputBusName = 'kspRxOut'
     end
 
-    % temp props for development -----------------------------------------------
-    properties(Hidden,Nontunable)
-        %OutputBusStruct Struct created from InputBusName bus. For dev use.
-        OutputBusStruct
-    end
-    % --------------------------------------------------------------------------
-
     properties(Access=protected)
         % autopilot state
         AutopilotEngaged = false;
