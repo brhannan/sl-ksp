@@ -40,6 +40,13 @@ to any location on your machine.
 - Double-click KSPToolbox.mltbx in the MATLAB Current Folder window to 
 install KSP Toolbox.  
 
+
+### Get krpc
+Install krpc with ````pip install krpc```  
+See full instructions 
+[here](https://krpc.github.io/krpc/getting-started.html).
+
+
 ### kRPC setup
 Follow the kRPC setup instructions given in this video:
 [OS X](https://www.youtube.com/watch?v=x6wdnge-hZU&t=0s),
@@ -53,6 +60,7 @@ Properties -> Betas).
 - Copy the kRPC folder from this download to the KSP GameData folder (find
 it by right-clicking Kerbal Space Program in Steam and go to Manage ->
 Browse local files).  
+
 
 ### MATLAB Python path
 
@@ -98,6 +106,18 @@ bus objects using the
 and 
 ```[kspRxOut,vesselRx,flight] = ksp.bus.getRxOutput()``` 
 commands. See the command-line help of each function for more info.
+
+
+## Troubleshooting
+
+If you see an "Unable to resolve the name py.slksp.SLKSPMessenger" error, 
+try the following.
+- Enter the command ```ksp.addSrcToPythonPath``` and simulate again.
+- Enter the command ```ver``` and ensure that KSP Toolbox is on the list 
+of installed products. If it isn't, see the install steps above.
+- See this doc page for debugging steps.
+- Check that you are able to import krpc in a Python prompt (not MATLAB). 
+If this doesn't work, see the kRPC installation link above.
 
 
 ## To do
