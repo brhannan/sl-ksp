@@ -10,7 +10,7 @@ KSP Toolbox provides Simulink blocks that allow Simulink to to communicate with 
 
 ## Highlights
 
-KSP Toolbox enables cosimulation with Simulink and Kerbal Space Program .
+KSP Toolbox enables cosimulation with Simulink and Kerbal Space Program.
 
 The goal of this project is to allow for controls and optical navigation
 algorithms (which may be written in MATLAB, Python, C, C++, or Simulink)
