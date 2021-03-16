@@ -57,14 +57,12 @@ Browse local files).
 ### MATLAB Python path
 
 See 
-[this doc page](https://www.mathworks.com/help/matlab/matlab_external/get-started-with-matlab-engine-for-python.html) 
-for instructions that will allow you to use Python commands in MATLAB.
+[this doc page](https://www.mathworks.com/help/matlab/call-python-libraries.html) 
+for instructions that will let you use Python commands in MATLAB.
 
 Open MATLAB and enter the command 
 ```py.print("hello world")``` in the Command Window to confirm that the 
-setup was successful. 
-
-The KSP Toolbox Simulink blocks use the Python kRPC API, so 
+setup was successful. The KSP Toolbox Simulink blocks use the Python kRPC API, so 
 make sure that MATLAB and Python are on speaking terms before proceeding.
 
 
