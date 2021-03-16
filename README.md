@@ -16,10 +16,10 @@ The goal of this project is to allow for controls and optical navigation
 algorithms (which may be written in MATLAB, Python, C, C++, or Simulink)
 to be tested in Kerbal Space Program.
 
-This provides
-- multidomain simulation capabilities, 
-- the coolest flight simulation visualization capabilities period, 
-- and interesting engineering analyses for KSP missions.
+This 
+- multidomain simulation capabilities (controls, vision, comms, ...),  
+- the coolest flight simulation visualization capabilities, period,
+- and turbocharged engineering analysis capabilities for KSP missions.
 
 ## Dependencies
 Kerbal Space Program 1.5.1  
