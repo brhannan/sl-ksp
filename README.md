@@ -5,9 +5,7 @@ Control a rocket in Kerbal Space Program from Simulink.
 KSP Toolbox provides Simulink blocks that allow Simulink to to communicate 
 with KSP.
 
-<p float = "left">
-    <img src="doc/images/slkspsidebyside.png" width = "800"/>
-</p>
+![](https://github.com/brhannan/sl-ksp/blob/main/doc/images/ksplaunchdemo2.gif)
 
 
 ## Highlights
@@ -92,23 +90,22 @@ appears.
 - Go back to the Simulink window and press the Launch button.  
 - Watch the altimeter climb. Landing is left as an exercise for the reader.  
 
-![](https://github.com/brhannan/sl-ksp/blob/main/doc/images/ksplaunchdemo.gif)
 
 ## Creating custom models with KSP Toolbox
 
-Automated
+Use the command ```ksp.createNewModel``` to open a template KSP Toolbox 
+model.
 
-Follow the steps below to create a new model using KSP Toolbox blocks.
+Or follow the steps below to manually create a new model using KSP Toolbox 
+blocks.
 - Create a new Simulink model.
 - Select a fixed-step solver. The example model uses a solver step size of 0.1.
 - Enter the command ```ksplib``` to open the KSP Toolbox library.
 - Copy a KSPServer block, a ToKSP block, and a FromKSP block to the model.
 - The ToKSP and FromKSP blocks require specific bus objects. Create these 
 bus objects using the 
-```[kspTxIn,control,autopilot] = ksp.bus.getTxInput()``` 
-and 
-```[kspRxOut,vesselRx,flight] = ksp.bus.getRxOutput()``` 
-commands. See the command-line help of each function for more info.
+```ksp.bus.getAll``` 
+command. See this function's command-line help for more info.
 
 
 ## Troubleshooting
