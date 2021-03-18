@@ -1,7 +1,9 @@
 # KSP Toolbox
+
 Control a rocket in Kerbal Space Program from Simulink.
 
-KSP Toolbox provides Simulink blocks that allow Simulink to to communicate with KSP.
+KSP Toolbox provides Simulink blocks that allow Simulink to to communicate 
+with KSP.
 
 <p float = "left">
     <img src="doc/images/slkspsidebyside.png" width = "800"/>
@@ -33,21 +35,20 @@ Stateflow (required to simulate example models)
 ## Setup
 
 ### Install KSP Toolbox
-- Download the toolbox installer at 
+- Get the toolbox installer at 
 [/release/KSPToolbox.mltbx](https://github.com/brhannan/sl-ksp/tree/main/release) 
 to any location on your machine.  
-- Open MATLAB and navigate to the folder that KSPToolbox.mltbx was downloaded to.  
+- Open MATLAB and navigate to the folder that KSPToolbox.mltbx was 
+downloaded to.  
 - Double-click KSPToolbox.mltbx in the MATLAB Current Folder window to 
 install KSP Toolbox.  
 
-
-### Install the kprc Python module
+### Get the kprc Python module
 Install krpc with ```pip install krpc```  
 See full instructions 
 [here](https://krpc.github.io/krpc/getting-started.html).
 
-
-### kRPC setup
+### Get the kRPC mod
 Follow the kRPC setup instructions given in this video:
 [OS X](https://www.youtube.com/watch?v=x6wdnge-hZU&t=0s),
 [PC](https://www.youtube.com/watch?v=RQzWri_K_UY).  
@@ -61,8 +62,7 @@ Properties -> Betas).
 it by right-clicking Kerbal Space Program in Steam and go to Manage ->
 Browse local files).  
 
-
-### MATLAB Python path
+### Check the MATLAB Python path
 
 See 
 [this doc page](https://www.mathworks.com/help/matlab/call-python-libraries.html) 
@@ -94,7 +94,9 @@ appears.
 
 ![](https://github.com/brhannan/sl-ksp/blob/main/doc/images/ksplaunchdemo.gif)
 
-## Creating custom models with KSP Toolbox blocks
+## Creating custom models with KSP Toolbox
+
+Automated
 
 Follow the steps below to create a new model using KSP Toolbox blocks.
 - Create a new Simulink model.
@@ -125,6 +127,7 @@ If this doesn't work, see the kRPC installation link above.
 ## To do
 - [x] Refactor TX, RX blocks so that they share one kRPC object.
 - [x] Package as toolbox.
+- [ ] Add function signatures JSON.
 - [ ] Add to the list of signals obtained from KSP in bus kspRxOut.
 - [ ] Add test suite.
 - [ ] Add HTML block documentation.
