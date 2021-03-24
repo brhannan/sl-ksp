@@ -63,6 +63,20 @@ class SLKSPMessenger:
     def get_met(self):
         """Get mission elapsed time (sec.)."""
         return self.vessel.met
+    
+    def get_pitch(self):
+        """
+        Get the pitch of the vessel relative to the horizon (degrees). 
+        A value between -90 and +90 deg.
+        """
+        return self.flight_info.pitch
+
+    def get_heading(self):
+        """
+        Get the heading of the vessel (its angle relative to north) 
+        (degrees). A value between 0 and 360 deg.
+        """
+        return self.flight_info.heading
 
     # setters
 

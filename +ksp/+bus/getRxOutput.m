@@ -59,14 +59,20 @@ elems(5).Dimensions = 3;
 elems(5).Description = ['Vessel velocity (m/s) in reference frame ' ...
     'vessel.orbit.body.reference_frame'];
 
-% elems(6).Name = 'speed';
-% elems(6).DataType = 'double';
-% elems(6).Dimensions = 1;
-% elems(6).Description = ['Vessel speed (m/s) in reference frame ' ...
-%     'vessel.orbit.body.reference_frame'];
+elems(6).Name = 'pitch';
+elems(6).DataType = 'double';
+elems(6).Dimensions = 1;
+elems(6).Description = ['The pitch of the vessel relative to the '  ...
+    'horizon, in degrees. A value between -90 and +90.'];
+
+elems(7).Name = 'heading';
+elems(7).DataType = 'double';
+elems(7).Dimensions = 1;
+elems(7).Description = ['The heading of the vessel (its angle '     ...
+    'relative to north), in degrees. A value between 0 and 360.'];
 
 % to be continued ...
-%
+
 % see
 % https://krpc.github.io/krpc/python/api/space-center/flight.html
 

@@ -10,7 +10,7 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
     %    Copyright 2020 Brian Hannan.
     
     % The SLKSPMessenger System object uses the SLKSPMessenger class 
-    % defined in src/slksp.py to communicate with the kRPC server.
+    % defined in SLKSPMessenger.py to communicate with the kRPC server.
 
     properties(Hidden,Nontunable)
         %SLKSPComm slksp.SLKSPMessenger
@@ -63,6 +63,9 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
             y.flight.surfaceAltitude = obj.SLKSPComm.get_surface_altitude();
             y.flight.latitude = obj.SLKSPComm.get_lat();
             y.flight.longitude = obj.SLKSPComm.get_lon();
+            y.flight.velocity = obj.SLKSPComm.get_vel();
+            y.flight.pitch = obj.SLKSPComm.get_pitch();
+            y.flight.heading = obj.SLKSPComm.get_heading();
             % get velocity vector, convert tuple to array
             vtup = obj.SLKSPComm.get_vel();
             vel = cell2mat(cell(vtup));
