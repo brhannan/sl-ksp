@@ -1,9 +1,7 @@
 # KSP Toolbox
 
-Control a rocket in Kerbal Space Program from Simulink.
-
-KSP Toolbox provides Simulink blocks that allow Simulink to to communicate 
-with KSP.
+KSP Toolbox provides Simulink blocks and MATLAB functions that allow you 
+to control a rocket in Kerbal Space Program from Simulink.
 
 ![](https://github.com/brhannan/sl-ksp/blob/main/doc/images/ksplaunchdemo2.gif)
 
@@ -13,7 +11,7 @@ with KSP.
 KSP Toolbox enables cosimulation with Simulink and Kerbal Space Program.
 
 The goal of this project is to allow for controls and optical navigation
-algorithms (which may be written in MATLAB, Python, C, C++, or Simulink)
+algorithms (which may be written in C, C++, Python, MATLAB, or Simulink)
 to be tested in Kerbal Space Program.
 
 KSP Toolbox provies 
@@ -42,7 +40,7 @@ downloaded to.
 install KSP Toolbox.  
 
 ### Get the kprc Python module
-Install krpc with ```pip install krpc```  
+Open a terminal and use the command ```pip install krpc``` to install krpc.  
 See full instructions 
 [here](https://krpc.github.io/krpc/getting-started.html).
 
@@ -68,8 +66,9 @@ for instructions that will let you use Python commands in MATLAB.
 
 Open MATLAB and enter the command 
 ```py.print("hello world")``` in the Command Window to confirm that the 
-setup was successful. The KSP Toolbox Simulink blocks use the Python kRPC API, so 
-make sure that MATLAB and Python are on speaking terms before proceeding.
+setup was successful. The KSP Toolbox Simulink blocks use the Python kRPC 
+API, so make sure that MATLAB and Python are on speaking terms before 
+proceeding.
 
 
 ## Run the example model
@@ -96,8 +95,8 @@ appears.
 Use the command ```ksp.createNewModel``` to open a template KSP Toolbox 
 model.
 
-Or follow the steps below to manually create a new model using KSP Toolbox 
-blocks.
+Alternatively, follow the steps below to manually create a new model using 
+KSP Toolbox blocks.
 - Create a new Simulink model.
 - Select a fixed-step solver. The example model uses a solver step size of 0.1.
 - Enter the command ```ksplib``` to open the KSP Toolbox library.
@@ -129,3 +128,9 @@ If this doesn't work, see the kRPC installation link above.
 - [ ] Add test suite.
 - [ ] Add HTML block documentation.
 - [ ] Add image capture tools for optical nav simulation.
+
+
+## License
+
+Copyright 2020, Brian Hannan. Released under the 
+[MIT License](https://github.com/brhannan/sl-ksp/blob/main/LICENSE).

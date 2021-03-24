@@ -9,6 +9,8 @@ function createNewModel()
 %
 %   See also KSP.BUS.GETALL
 
+%    Copyright 2020 Brian Hannan.
+
 hs = new_system();
 open_system(hs);
 set_param(hs,'Solver','FixedStepAuto');

@@ -7,6 +7,8 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
     %
     %   See https://krpc.github.io/krpc/.
     
+    %    Copyright 2020 Brian Hannan.
+    
     % The SLKSPMessenger System object uses the SLKSPMessenger class 
     % defined in src/slksp.py to communicate with the kRPC server.
 

@@ -15,6 +15,8 @@ function addSrcToPythonPath()
 %   % EXAMPLE:
 %       ksp.addSrcToPythonPath
 
+%    Copyright 2020 Brian Hannan.
+
 % make sure MATLAB/Python are set up correctly before py commands are used
 checkPythonMLSetup();
 

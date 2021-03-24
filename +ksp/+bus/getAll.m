@@ -6,6 +6,8 @@ function getAll()
 %   % EXAMPLE:
 %       ksp.bus.getAll
 
+%    Copyright 2020 Brian Hannan.
+
 [kspRxOut,vesselRx,flight] = ksp.bus.getRxOutput();
 [kspTxIn,control,autopilot] = ksp.bus.getTxInput();
 
