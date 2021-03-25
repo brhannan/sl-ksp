@@ -52,7 +52,7 @@ Follow the kRPC setup instructions given in this video:
 Basically, the steps in the video above are (assuming you already have
 Python 3 up and running):  
 - Install KSP v1.5.1 using Steam. Open Steam, right-click Kerbal Space Program,
-go to Properties -> Betas and select v1.5.1).  
+go to Properties -> Betas and select v1.5.1.  
 - Download the KSP [kRPC mod](https://spacedock.info/mod/69/kRPC).  
 - Copy the kRPC folder downloaded in the step above to the KSP GameData folder
 (find it by right-clicking Kerbal Space Program in Steam and go to Manage ->
