@@ -1,23 +1,30 @@
 # KSP Toolbox
 
 KSP Toolbox provides Simulink blocks and MATLAB functions that can be used to
-control a rocket in Kerbal Space Program from Simulink.
+control a rocket in 
+(Kerbal Space Program)[https://en.wikipedia.org/wiki/Kerbal_Space_Program] 
+from Simulink. 
 
 ![](https://github.com/brhannan/sl-ksp/blob/main/doc/images/ksplaunchdemo2.gif)
 
 
 ## Highlights
 
-KSP Toolbox enables cosimulation with Simulink and Kerbal Space Program.
+KSP Toolbox enables cosimulation with Simulink and Kerbal Space Program. 
+KSP Toolbox blocks allow any Simulink model send and receive KSP flight 
+data in real time.
 
-The goal of this project is to allow for controls and optical navigation
-algorithms (which may be written in C, C++, Python, MATLAB, or Simulink)
-to be tested in Kerbal Space Program.
-
-KSP Toolbox provies
+KSP Toolbox enables 
 - multidomain simulation capabilities (controls, vision, comms, ...),  
 - the coolest flight simulation visualization capabilities, period,
 - and turbocharged engineering analysis capabilities for KSP missions.
+
+Kerbal Space Program provides a high-quality physics engine 
+
+The motivation for this project is to allow for controls and optical 
+navigation algorithms (which may be written in languages including C, C++, 
+Python, MATLAB, Simulink) to be tested in Kerbal Space Program.
+
 
 ## Dependencies
 Kerbal Space Program 1.5.1  
@@ -43,7 +50,7 @@ list of installed toolboxes.
 
 ### Get the kprc Python module
 KSP Toolbox blocks use the krpc Python module to communicate with 
-Kerbal Space Program. 
+Kerbal Space Program.  
 **If you already have Python and pip installed**, open a terminal and use the 
 command 
 ```pip install krpc``` to install krpc.  
