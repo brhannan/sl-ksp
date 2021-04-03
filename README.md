@@ -19,11 +19,13 @@ KSP Toolbox enables
 - the coolest flight simulation visualization capabilities, period,
 - and turbocharged engineering analysis capabilities for KSP missions.
 
-Kerbal Space Program provides a high-quality physics engine 
-
-The motivation for this project is to allow for controls and optical 
-navigation algorithms (which may be written in languages including C, C++, 
-Python, MATLAB, Simulink) to be tested in Kerbal Space Program.
+Kerbal Space Program provides a high-quality physics engine that models  
+flight dynamics and orbital mechanics. KSP Toolbox leverages this 
+simulation environment, allowing you to create a Simulink model containing 
+GN&C algorithms and immediately simulate it with a high-quality 
+vehicle/environment model. 
+The toolbox allows language flexibility. GN&C algorithms can be written in 
+any of a number of languages including C, C++, Python, MATLAB, and Simulink.
 
 
 ## Dependencies
