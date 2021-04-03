@@ -3,7 +3,7 @@
 KSP Toolbox provides Simulink blocks and MATLAB functions that can be used to
 control a rocket in 
 [Kerbal Space Program](https://en.wikipedia.org/wiki/Kerbal_Space_Program) 
-from Simulink. 
+(KSP) from Simulink. 
 
 ![](https://github.com/brhannan/sl-ksp/blob/main/doc/images/ksplaunchdemo2.gif)
 
@@ -11,8 +11,8 @@ from Simulink.
 ## Highlights
 
 KSP Toolbox enables cosimulation with Simulink and Kerbal Space Program. 
-KSP Toolbox blocks allow any Simulink model send and receive KSP flight 
-data in real time.
+It provides a Simulink block library that allows any Simulink model to 
+communicate with KSP in real time.
 
 KSP Toolbox enables 
 - multidomain simulation capabilities (controls, vision, comms, ...),  
