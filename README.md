@@ -31,26 +31,36 @@ Stateflow (required to simulate example models)
 ## Setup
 
 ### Install KSP Toolbox
-- Get the toolbox installer at
-[/release/KSPToolbox.mltbx](https://github.com/brhannan/sl-ksp/tree/main/release)
-to any location on your machine.  
-- Open MATLAB and navigate to the folder that KSPToolbox.mltbx was
-downloaded to.  
+- Download the toolbox installer at
+[/release/KSPToolbox.mltbx](https://github.com/brhannan/sl-ksp/tree/main/release).
+You can download this file to any location on your machine. This is the only file 
+that is needed; you do not need to copy the entire repository to install the toolbox.  
+- Open MATLAB and navigate to the folder that contains KSPToolbox.mltbx.  
 - Double-click KSPToolbox.mltbx in the MATLAB Current Folder window to
 install KSP Toolbox.  
+- Enter the command ```ver``` in MATLAB. You snould see KSP Toolbox in the 
+list of installed toolboxes.  
 
 ### Get the kprc Python module
-Open a terminal and use the command ```pip install krpc``` to install krpc.
-See full instructions
+KSP Toolbox blocks use the krpc Python module to communicate with 
+Kerbal Space Program. 
+**If you already have Python and pip installed**, open a terminal and use the 
+command 
+```pip install krpc``` to install krpc.  
+**If you do not currently have Python and/or pip**, follow all setup 
+instructions listed 
 [here](https://krpc.github.io/krpc/getting-started.html).
+
+### Get Kerbal Space Program
+Get 
+[Kerbal Space Program from Steam](https://store.steampowered.com/app/220200/Kerbal_Space_Program/).
 
 ### Get the kRPC mod
 Follow the kRPC setup instructions given in this video:
 [OS X](https://www.youtube.com/watch?v=x6wdnge-hZU&t=0s),
 [PC](https://www.youtube.com/watch?v=RQzWri_K_UY).  
 
-Basically, the steps in the video above are (assuming you already have
-Python 3 up and running):  
+Basically, the steps in the video above are:  
 - Install KSP v1.5.1 using Steam. Open Steam, right-click Kerbal Space Program,
 go to Properties -> Betas and select v1.5.1.  
 - Download the KSP [kRPC mod](https://spacedock.info/mod/69/kRPC).  
@@ -58,17 +68,18 @@ go to Properties -> Betas and select v1.5.1.
 (find it by right-clicking Kerbal Space Program in Steam and go to Manage ->
 Browse local files).  
 
-### Check the MATLAB Python path
+### Check your MATLAB Python path
 
 See
 [this doc page](https://www.mathworks.com/help/matlab/call-python-libraries.html)
-for instructions that will let you use Python commands in MATLAB.
+for instructions that will allow you to execute Python commands from MATLAB.
 
 Open MATLAB and enter the command
 ```py.print("hello world")``` in the Command Window to confirm that the
 setup was successful. The KSP Toolbox Simulink blocks use the Python kRPC
 API, so make sure that MATLAB and Python are on speaking terms before
-proceeding.
+proceeding. If this command produces an error, see the **Troubleshooting** 
+section below.  
 
 
 ## Run the example model
