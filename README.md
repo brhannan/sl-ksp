@@ -60,14 +60,15 @@ instructions listed
 
 ### Get Kerbal Space Program
 Get 
-[Kerbal Space Program from Steam](https://store.steampowered.com/app/220200/Kerbal_Space_Program/).
+[Kerbal Space Program from Steam](https://store.steampowered.com/app/220200/Kerbal_Space_Program/).  
+You need to install KSP from this source. Steam is required for the steps below.  
 
 ### Get the kRPC mod
 Follow the kRPC setup instructions given in this video:
 [OS X](https://www.youtube.com/watch?v=x6wdnge-hZU&t=0s),
 [PC](https://www.youtube.com/watch?v=RQzWri_K_UY).  
 
-Basically, the steps in the video above are:  
+The TLDR for the video above is:  
 - Install KSP v1.5.1 using Steam. Open Steam, right-click Kerbal Space Program,
 go to Properties -> Betas and select v1.5.1.  
 - Download the KSP [kRPC mod](https://spacedock.info/mod/69/kRPC).  
@@ -90,7 +91,7 @@ section below.
 
 
 ## Run the example model
-
+KSP Toolbox contains a simple example model. Run it using the steps below. 
 - Open an example project using the MATLAB command ```ksp.loadSuborbitalFlightExample```  
 - Open KSP and put any rocket on the pad.  
 - If the kRPC server window doesn't automatically appear in the KSP window,
@@ -110,19 +111,23 @@ appears.
 
 ## Creating custom models with KSP Toolbox
 
-Use the command ```ksp.createNewModel``` to open a template KSP Toolbox
-model.
+KSP Toolbox is compatible with any Simulink model that uses a fixed-step 
+solver and contains three KSP Toolbox blocks: KRPCServer, ToKSP, FromKSP.  
+
+You can use the command ```ksp.createNewModel``` to open a template KSP 
+Toolbox model.  
 
 Alternatively, follow the steps below to manually create a new model using
 KSP Toolbox blocks.
 - Create a new Simulink model.
 - Select a fixed-step solver. The example model uses a solver step size of 0.1.
-- Enter the command ```ksplib``` to open the KSP Toolbox library.
+- Enter the MATLAB command ```ksplib``` to open the KSP Toolbox library.
 - Copy a KSPServer block, a ToKSP block, and a FromKSP block to the model.
 - The ToKSP and FromKSP blocks require specific bus objects. Create these
-bus objects using the
+bus objects using the 
 ```ksp.bus.getAll```
-command. See this function's command-line help for more info.
+command. See this function's command-line help for more info (enter the 
+MATLAB command ```help ksp.bus.getAll```).  
 
 
 ## Troubleshooting
