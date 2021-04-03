@@ -45,8 +45,6 @@ that is needed; you do not need to copy the entire repository to install the too
 - Open MATLAB and navigate to the folder that contains KSPToolbox.mltbx.  
 - Double-click KSPToolbox.mltbx in the MATLAB Current Folder window to
 install KSP Toolbox.  
-- Enter the command ```ver``` in MATLAB. You snould see KSP Toolbox in the 
-list of installed toolboxes.  
 
 ### Get the kprc Python module
 KSP Toolbox blocks use the krpc Python module to communicate with 

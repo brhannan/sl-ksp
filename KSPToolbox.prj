@@ -4,8 +4,8 @@
     <param.authnamewatermark>Brian Hannan</param.authnamewatermark>
     <param.email />
     <param.company />
-    <param.summary>KSP Toolbox for MATLAB/Simulink</param.summary>
-    <param.description>Control a rocket in KSP from Simulink.</param.description>
+    <param.summary>Control a rocket in Kerbal Space Program from Simulink.</param.summary>
+    <param.description>Control a rocket in Kerbal Space Program from Simulink.</param.description>
     <param.screenshot>${PROJECT_ROOT}/doc/images/kspthumbnail.png</param.screenshot>
     <param.version>1.0</param.version>
     <param.output>${PROJECT_ROOT}/KSP Toolbox.mltbx</param.output>
@@ -118,6 +118,7 @@ README.md</param.exclude.filters>
       <file>${PROJECT_ROOT}/examples</file>
       <file>${PROJECT_ROOT}/libraries</file>
       <file>${PROJECT_ROOT}/models</file>
+      <file>${PROJECT_ROOT}/release</file>
       <file>${PROJECT_ROOT}/resources</file>
       <file>${PROJECT_ROOT}/src</file>
       <file>${PROJECT_ROOT}/test</file>

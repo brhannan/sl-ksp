@@ -3,8 +3,11 @@ function loadSuborbitalFlightExample()
 
 %    Copyright 2020 Brian Hannan.
 
-slksproot = ksp.getSlkspRootDir();
-examplePrj = fullfile(slksproot,'Slksp.prj');
-openProject(examplePrj);
+% edit sys.path if <sl-ksp root>/src is not on it already
+ksp.addSrcToPythonPath();
+
+% open example model
+mdl = 'kspdemo';
+open_system(mdl)
 
 end
