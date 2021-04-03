@@ -19,15 +19,15 @@ KSP Toolbox enables
 - the coolest flight simulation visualization capabilities, period,
 - and turbocharged engineering analysis capabilities for KSP missions.
 
-Kerbal Space Program provides a high-fidelity physics engine that models 
-flight dynamics and orbital mechanics. KSP Toolbox leverages this 
-simulation environment, allowing you to create a Simulink model containing 
-GN&C algorithms and immediately simulate it with a vehicle/environment model. 
+KSP Toolbox leverages Kerbal Space Program's high-fidelity physics 
+engine, allowing you to model GN&C algorithms in Simulink and then 
+immediately perform flight simulations with KSP. 
 The toolbox allows language flexibility; GN&C algorithms can be written in 
 any of a number of languages including C, C++, Python, MATLAB, and Simulink.
 
 
 ## Dependencies
+
 Kerbal Space Program 1.5.1  
 [kRPC 0.4.8](https://krpc.github.io/krpc)  
 MATLAB R2020b  
@@ -48,6 +48,7 @@ that is needed; you do not need to copy the entire repository to install the too
 install KSP Toolbox.  
 
 ### Get the kprc Python module
+
 KSP Toolbox blocks use the krpc Python module to communicate with 
 Kerbal Space Program.  
 **If you already have Python and pip installed**, open a terminal and use the 
@@ -58,11 +59,13 @@ instructions listed
 [here](https://krpc.github.io/krpc/getting-started.html).
 
 ### Get Kerbal Space Program
+
 Get 
 [Kerbal Space Program from Steam](https://store.steampowered.com/app/220200/Kerbal_Space_Program/).  
 You need to install KSP from this source. Steam is required for the steps below.  
 
 ### Get the kRPC mod
+
 Follow the kRPC setup instructions given in this video:
 [OS X](https://www.youtube.com/watch?v=x6wdnge-hZU&t=0s),
 [PC](https://www.youtube.com/watch?v=RQzWri_K_UY).  
@@ -75,7 +78,7 @@ go to Properties -> Betas and select v1.5.1.
 (find it by right-clicking Kerbal Space Program in Steam and go to Manage ->
 Browse local files).  
 
-### Check your MATLAB Python path
+### Call Python from MATLAB
 
 See
 [this doc page](https://www.mathworks.com/help/matlab/call-python-libraries.html)
@@ -90,8 +93,10 @@ section below.
 
 
 ## Run the example model
+
 KSP Toolbox contains a simple example model. Run it using the steps below. 
-- Open an example project using the MATLAB command ```ksp.loadSuborbitalFlightExample```  
+- Open an example project using the MATLAB command 
+```ksp.loadSuborbitalFlightExample```  
 - Open KSP and put any rocket on the pad.  
 - If the kRPC server window doesn't automatically appear in the KSP window,
 select the button shown by the red arrow in the image below. Press the
@@ -119,14 +124,14 @@ Toolbox model.
 Alternatively, follow the steps below to manually create a new model using
 KSP Toolbox blocks.
 - Create a new Simulink model.
-- Select a fixed-step solver. The example model uses a solver step size of 0.1.
+- Open the Configuration Parameters and select a fixed-step solver.
+- Choose a step size. The example model uses a solver step size of 0.1.
 - Enter the MATLAB command ```ksplib``` to open the KSP Toolbox library.
 - Copy a KSPServer block, a ToKSP block, and a FromKSP block to the model.
 - The ToKSP and FromKSP blocks require specific bus objects. Create these
-bus objects using the 
-```ksp.bus.getAll```
-command. See this function's command-line help for more info (enter the 
-MATLAB command ```help ksp.bus.getAll```).  
+bus objects using the MATLAB command ```ksp.bus.getAll```. See this 
+function's  command-line help for more info (enter the  command 
+```help ksp.bus.getAll```).  
 
 
 ## Troubleshooting
