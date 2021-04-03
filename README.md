@@ -2,7 +2,7 @@
 
 KSP Toolbox provides Simulink blocks and MATLAB functions that can be used to
 control a rocket in 
-(Kerbal Space Program)[https://en.wikipedia.org/wiki/Kerbal_Space_Program] 
+[Kerbal Space Program](https://en.wikipedia.org/wiki/Kerbal_Space_Program) 
 from Simulink. 
 
 ![](https://github.com/brhannan/sl-ksp/blob/main/doc/images/ksplaunchdemo2.gif)
@@ -19,12 +19,11 @@ KSP Toolbox enables
 - the coolest flight simulation visualization capabilities, period,
 - and turbocharged engineering analysis capabilities for KSP missions.
 
-Kerbal Space Program provides a high-quality physics engine that models  
+Kerbal Space Program provides a high-fidelity physics engine that models 
 flight dynamics and orbital mechanics. KSP Toolbox leverages this 
 simulation environment, allowing you to create a Simulink model containing 
-GN&C algorithms and immediately simulate it with a high-quality 
-vehicle/environment model. 
-The toolbox allows language flexibility. GN&C algorithms can be written in 
+GN&C algorithms and immediately simulate it with a vehicle/environment model. 
+The toolbox allows language flexibility; GN&C algorithms can be written in 
 any of a number of languages including C, C++, Python, MATLAB, and Simulink.
 
 
