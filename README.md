@@ -54,8 +54,8 @@ Kerbal Space Program.
 **If you already have Python and pip installed**, open a terminal and use the 
 command 
 ```pip install krpc``` to install krpc.  
-**If you do not currently have Python and/or pip**, follow all setup 
-instructions listed 
+**If you do not currently have Python and/or pip installed**, follow all 
+setup instructions listed 
 [here](https://krpc.github.io/krpc/getting-started.html).
 
 ### Get Kerbal Space Program
@@ -115,11 +115,9 @@ appears.
 
 ## Creating custom models with KSP Toolbox
 
-KSP Toolbox is compatible with any Simulink model that uses a fixed-step 
-solver and contains three KSP Toolbox blocks: KRPCServer, ToKSP, FromKSP.  
-
-You can use the command ```ksp.createNewModel``` to open a template KSP 
-Toolbox model.  
+Use the command ```ksp.createNewModel``` to open a template KSP Toolbox 
+model. Add arbitrary components, connect them to the FromKSP and ToKSP 
+blocks in this model, and you're ready to go.    
 
 Alternatively, follow the steps below to manually create a new model using
 KSP Toolbox blocks.
