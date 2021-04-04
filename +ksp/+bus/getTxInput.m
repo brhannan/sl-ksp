@@ -30,6 +30,10 @@ elems(4).Name = 'activateNextStage';
 elems(4).DataType = 'boolean';
 elems(4).Description = 'activate next stage when true';
 
+elems(5).Name = 'resetReferenceFrames';
+elems(5).DataType = 'boolean';
+elems(5).Description = 'Get current values for all ref. frames when true.';
+
 control = Simulink.Bus;
 control.Elements = elems;
 control.Description = 'control data';

@@ -14,16 +14,14 @@ KSP Toolbox enables cosimulation with Simulink and Kerbal Space Program.
 It provides a Simulink block library that allows any Simulink model to 
 communicate with KSP in real time.
 
-KSP Toolbox enables 
+This enables 
 - multidomain simulation capabilities (controls, vision, comms, ...),  
 - the coolest flight simulation visualization capabilities, period,
 - and turbocharged engineering analysis capabilities for KSP missions.
 
-KSP Toolbox leverages Kerbal Space Program's high-fidelity physics 
-engine, allowing you to model GN&C algorithms in Simulink and then 
-immediately perform flight simulations with KSP. 
-The toolbox allows language flexibility; GN&C algorithms can be written in 
-any of a number of languages including C, C++, Python, MATLAB, and Simulink.
+KSP Toolbox leverages Kerbal Space Program's physics engine, allowing you 
+to create GN&C algorithms in Simulink and then immediately run flight 
+simulations with KSP. 
 
 
 ## Dependencies
@@ -41,8 +39,9 @@ Stateflow (required to simulate example models)
 ### Install KSP Toolbox
 - Download the toolbox installer at
 [/release/KSPToolbox.mltbx](https://github.com/brhannan/sl-ksp/tree/main/release).
-You can download this file to any location on your machine. This is the only file 
-that is needed; you do not need to copy the entire repository to install the toolbox.  
+You can download this file to any location on your machine. This is the 
+only file that is needed. You do not need to download the entire GitHub 
+repository to install the toolbox.  
 - Open MATLAB and navigate to the folder that contains KSPToolbox.mltbx.  
 - Double-click KSPToolbox.mltbx in the MATLAB Current Folder window to
 install KSP Toolbox.  
@@ -150,6 +149,7 @@ If this doesn't work, see the kRPC installation link above.
 - [x] Package as toolbox.
 - [ ] Add function signatures JSON.
 - [ ] Add to the list of signals obtained from KSP in bus kspRxOut.
+- [ ] Add inputs to 
 - [ ] Add test suite.
 - [ ] Add HTML block documentation.
 - [ ] Add image capture tools for optical nav simulation.

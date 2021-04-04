@@ -66,28 +66,44 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
             y.flight.velocity = obj.SLKSPComm.get_vel();
             y.flight.pitch = obj.SLKSPComm.get_pitch();
             y.flight.heading = obj.SLKSPComm.get_heading();
-            % get velocity vector, convert tuple to array
+            y.flight.gForce = obj.SLKSPComm.get_g_force();
+            y.flight.horizontalSpeed = obj.SLKSPComm.get_horizontal_speed();
+            y.flight.verticalSpeed = obj.SLKSPComm.get_vertical_speed();
+            % Get velocity vector and convert tuple to array.
             vtup = obj.SLKSPComm.get_vel();
             vel = cell2mat(cell(vtup));
             y.flight.velocity = vel;
+            y.flight.gForce = obj.SLKSPComm.get_g_force();
             
             %--- send ---
 
-            % autopilot settings
+            % Set autopilot settings if requested.
             if u.autopilot.engage && ~obj.AutopilotEngaged
                 % set autopilot pitch, heading
                 obj.SLKSPComm.set_pitch_and_heading( ...
                     u.autopilot.targetPitch, u.autopilot.targetHeading);
-                obj.SLKSPComm.set_throttle(1); % --- TODO: allow user to set this val ---
                 obj.SLKSPComm.engage_autopilot;
                 obj.AutopilotEngaged = true;
                 fprintf('Autopilot engaged.\n');
             end
 
-            % activate next stage
+            % Activate next stage if requested.
             if u.control.activateNextStage
                 obj.SLKSPComm.activate_next_stage();
                 fprintf('Next stage activated.\n');
+            end
+            
+            % Get current values for all reference frames if requested. 
+            % This command tells slksp.SLKSPMessenger to update its 
+            % reference frame states. For example, use this command to 
+            % get new orbit and celestial body frames after entering a new
+            % orbit.
+            % Reference frames are initialized automatically by
+            % slksp.SLKSPMessenter, so this request is only required after
+            % major events in the post-launch mission timeline. There is no
+            % need to make this request before launch.
+            if u.control.resetReferenceFrames
+                obj.SLKSPComm.get_all_ref_frames();
             end
             
         end % stepImpl

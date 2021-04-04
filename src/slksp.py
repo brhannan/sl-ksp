@@ -9,14 +9,31 @@ class SLKSPMessenger:
     vessel = -1
     # Flight object
     flight_info = -1
-    # The ref. frame that is fixed relative to the celestial body.
-    cb_frame = -1
+
+    # Celestial body frame
+    #   The ref. frame that is fixed relative to the celestial body.
+    #   (Vessel.orbit.body.reference_frame)
+    celestial_body_frame = -1
+    # Vessel frame.
+    #   The reference frame that is fixed relative to the vessel and 
+    #   orientated with the vessel. (Vessel.reference_frame)
+    vessel_frame = -1
+    # Orbital reference frame
+    #   The reference frame that is fixed relative to the vessel, and 
+    #   orientated with the vessels orbital prograde/normal/radial 
+    #   diections. (Vesel.orbital_reference_frame)
+    orbital_ref_frame = -1
+    # Nonrotating refrence frame
+    #   The reference frame that is fixed relative to this celestial body, 
+    #   and orientated in a fixed direction (it does not rotate with the 
+    #   body). (CelestialBody.non_rotating_reference_frame)
+    non_rotating_ref_frame = -1
 
     def __init__(self):
         self.conn = krpc.connect(name='Simulink model')
         self.vessel = self.conn.space_center.active_vessel
         self.flight_info = self.vessel.flight()
-        self.cb_frame = self.vessel.orbit.body.reference_frame
+        self.get_all_ref_frames()
 
     # getters
 
@@ -50,7 +67,15 @@ class SLKSPMessenger:
 
     def get_vel(self):
         """Get vessel's velocity vector (m/s) in the surface frame."""
-        return self.vessel.flight(self.cb_frame).velocity
+        return self.vessel.flight(self.celestial_body_frame).velocity
+
+    def get_horizontal_speed(self):
+        """Get vessel's horizontal speed (m/s) in the surface frame."""
+        return self.vessel.flight(self.celestial_body_frame).horizontal_speed
+
+    def get_vertical_speed(self):
+        """Get vessel's vertical speed (m/s) in the surface frame."""
+        return self.vessel.flight(self.celestial_body_frame).vertical_speed
 
     def get_solid_fuel(self):
         """Get amount of solid fuel remaining."""
@@ -77,6 +102,61 @@ class SLKSPMessenger:
         (degrees). A value between 0 and 360 deg.
         """
         return self.flight_info.heading
+
+    def get_g_force(self):
+        """
+        Get the current G force acting on the vessel in g.
+        """
+        return self.flight_info.g_force
+
+
+    # Reference frame helper functions.
+    #   See:
+    #   https://krpc.github.io/krpc/tutorials/reference-frames.html
+
+    def get_all_ref_frames(self):
+        """Get current values of all reference frames."""
+        self.get_celestial_body_frame()
+        self.get_vessel_frame()
+        self.get_orbital_ref_frame()
+        self.get_non_rotating_ref_frame()
+
+    def get_celestial_body_frame(self):
+        """
+        Get current celestial body frame. The result is stored in property 
+        celestial_body_frame.
+        See:
+        https://krpc.github.io/krpc/python/api/space-center/vessel.html
+        """
+        self.celestial_body_frame = self.vessel.orbit.body.reference_frame
+
+    def get_vessel_frame(self):
+        """
+        Get Vesel.reference_frame. The result is stored in property 
+        vessel_frame.
+        See:
+        https://krpc.github.io/krpc/python/api/space-center/vessel.html
+        """
+        self.vessel_frame = self.vessel.reference_frame
+
+    def get_orbital_ref_frame(self):
+        """
+        Get Vesel.orbital_reference_frame. The result is stored in property 
+        vessel_frame.
+        See:
+        https://krpc.github.io/krpc/python/api/space-center/vessel.html
+        """
+        self.orbital_ref_frame = self.vessel.reference_frame
+
+    def get_non_rotating_ref_frame(self):
+        """
+        Get CelestialBody.non_rotating_ref_frame. The result is stored in 
+        property non_rotating_ref_frame.
+        See
+        https://krpc.github.io/krpc/python/api/space-center/celestial-body.html
+        """
+        self.non_rotating_ref_frame = self.vessel.orbit.body.non_rotating_reference_frame
+
 
     # setters
 

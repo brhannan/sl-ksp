@@ -22,6 +22,10 @@ elems(3).Name = 'met';
 elems(3).DataType = 'double';
 elems(3).Description = 'mission elapsed time (s)';
 
+elems(3).Name = 'met';
+elems(3).DataType = 'double';
+elems(3).Description = 'mission elapsed time (s)';
+
 vesselRx = Simulink.Bus;
 vesselRx.Elements = elems;
 vesselRx.Description = 'received vessel data';
@@ -70,6 +74,21 @@ elems(7).DataType = 'double';
 elems(7).Dimensions = 1;
 elems(7).Description = ['The heading of the vessel (its angle '     ...
     'relative to north), in degrees. A value between 0 and 360.'];
+
+elems(8).Name = 'gForce';
+elems(8).DataType = 'double';
+elems(8).Dimensions = 1;
+elems(8).Description = 'The current G force acting on the vessel in g.';
+
+elems(9).Name = 'horizontalSpeed';
+elems(9).DataType = 'double';
+elems(9).Dimensions = 1;
+elems(9).Description = 'Vessel horizontal speed (m/s) in the surface frame.';
+
+elems(10).Name = 'verticalSpeed';
+elems(10).DataType = 'double';
+elems(10).Dimensions = 1;
+elems(10).Description = 'Vessel vertical speed (m/s) in the surface frame.';
 
 % to be continued ...
 
