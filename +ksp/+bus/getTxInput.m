@@ -13,12 +13,12 @@ elems = Simulink.BusElement;
 
 elems(1).Name = 'sas';
 elems(1).DataType = 'boolean';
-elems(1).Description = 'SAS state';
+elems(1).Description = 'SAS (stability assist system) state.';
 
 % --- to do: add method when high ---
 elems(2).Name = 'toggleSAS';
 elems(2).DataType = 'boolean';
-elems(2).Description = 'toggle SAS state when true';
+elems(2).Description = 'Toggle SAS state when true.';
 
 elems(3).Name = 'throttle';
 elems(3).DataType = 'double';

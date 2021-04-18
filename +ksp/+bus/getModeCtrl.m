@@ -8,7 +8,7 @@ function mcout = getModeCtrl()
 elems = Simulink.BusElement;
 
 elems(1).Name = 'mode';
-elems(1).DataType = 'int8';
+elems(1).DataType = 'int16';
 elems(1).Description = 'guidance system mode';
 
 elems(2).Name = 'activateNextStage';

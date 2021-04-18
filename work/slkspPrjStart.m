@@ -5,7 +5,6 @@ function slkspPrjStart()
 ksp.addSrcToPythonPath();
 
 % open example model
-mdl = 'kspdemo';
-open_system(mdl)
+ksp.openSuborbitalFlightExample();
 
 end

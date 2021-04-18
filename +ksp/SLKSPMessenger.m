@@ -26,6 +26,10 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
         %OutputBusName Output bus
         %   The name of the output bus object.
         OutputBusName = 'kspRxOut'
+        %CurrentThrottleValue Current throttle value.
+        %   The current throttle value. Used to detect throttle setting
+        %   change.
+        CurrentThrottleValue = 0
     end
 
     properties(Access=protected)
@@ -58,6 +62,8 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
             y.vessel.liquidFuelAmt = obj.SLKSPComm.get_liquid_fuel();
             y.vessel.solidFuelAmt = obj.SLKSPComm.get_solid_fuel();
             y.vessel.met = obj.SLKSPComm.get_met();
+            y.vessel.apoapsisAltitude = obj.SLKSPComm.get_vehicle_apoapsis_altitude();
+            y.vessel.periapsisAltitude = obj.SLKSPComm.get_vehicle_periapsis_altitude();
             % flight
             y.flight.meanAltitude = obj.SLKSPComm.get_mean_altitude();
             y.flight.surfaceAltitude = obj.SLKSPComm.get_surface_altitude();
@@ -91,6 +97,12 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
             if u.control.activateNextStage
                 obj.SLKSPComm.activate_next_stage();
                 fprintf('Next stage activated.\n');
+            end
+            
+            % Set throttle if requested value is not equal to current
+            % throttle state.
+            if u.control.throttle ~= obj.CurrentThrottleValue
+                obj.SLKSPComm.set_throttle(u.control.throttle);
             end
             
             % Get current values for all reference frames if requested. 

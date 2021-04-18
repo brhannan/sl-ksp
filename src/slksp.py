@@ -109,6 +109,20 @@ class SLKSPMessenger:
         """
         return self.flight_info.g_force
 
+    def get_vehicle_apoapsis_altitude(self):
+        """
+        The apoapsis of the orbit, in meters, above the sea level of the 
+        body being orbited.
+        """
+        return self.vessel.orbit.apoapsis_altitude
+
+    def get_vehicle_periapsis_altitude(self):
+        """
+        The periapsis of the orbit, in meters, above the sea level of the 
+        body being orbited.
+        """
+        return self.vessel.orbit.periapsis_altitude
+
 
     # Reference frame helper functions.
     #   See:

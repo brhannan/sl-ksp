@@ -50,11 +50,15 @@ add_line(bdname,'CreateToKSPBus/1','ToKSP/1');
 % Add comments to the canvas.
 constAnnot = Simulink.Annotation(bdname, ...
     'Enter command >> buseditor to view contents of kspTxIn bus.');
-constAnnot.Position = [390,385,665,397];
+constAnnot.Position = [390,415,665,427];
 cmdsAnnot = Simulink.Annotation(bdname,                             ...
     ['Enter commands >> ksp.bus.getAll; kspTxIn0 = '                ...
     'Simulink.Bus.createMATLABStruct(''kspTxIn'') to create all '   ...
     'workspace data.']);
-cmdsAnnot.Position = [271,415,828,427];
+cmdsAnnot.Position = [271,385,828,397];
+
+% Set up base WS data.
+evalin('base','ksp.bus.getAll;')
+evalin('base','kspTxIn0 = Simulink.Bus.createMATLABStruct(''kspTxIn'');')
 
 end % createNewModel

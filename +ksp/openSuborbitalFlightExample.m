@@ -1,5 +1,5 @@
-function loadSuborbitalFlightExample()
-%KSP.LOADSUBORBITALFLIGHTEXAMPLE Load KSP Toolbox suborbital example.
+function openSuborbitalFlightExample()
+%KSP.OPENSUBORBITALFLIGHTEXAMPLE Load KSP Toolbox suborbital example.
 
 %    Copyright 2020 Brian Hannan.
 

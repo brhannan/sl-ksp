@@ -26,6 +26,16 @@ elems(3).Name = 'met';
 elems(3).DataType = 'double';
 elems(3).Description = 'mission elapsed time (s)';
 
+elems(4).Name = 'apoapsisAltitude';
+elems(4).DataType = 'double';
+elems(4).Description = ['The apoapsis of the orbit, in meters, above '  ...
+    'the sea level of the body being orbited.'];
+
+elems(5).Name = 'periapsisAltitude';
+elems(5).DataType = 'double';
+elems(5).Description = ['The periapsis of the orbit, in meters, above '  ...
+    'the sea level of the body being orbited.'];
+
 vesselRx = Simulink.Bus;
 vesselRx.Elements = elems;
 vesselRx.Description = 'received vessel data';
