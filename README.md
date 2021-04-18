@@ -149,6 +149,7 @@ If this doesn't work, see the kRPC installation link above.
 - [x] Package as toolbox.
 - [ ] Add function signatures JSON.
 - [x] Add orbit apoapsis/periapsis to parameters received from KSP.
+- [ ] Add SAS commands (prograde, retrograde, etc.).
 - [ ] Get [orbit params](https://krpc.github.io/krpc/python/api/space-center/orbit.html) from KSP: radius, eccentricity, mean anomaly.
 - [ ] Add test suite.
 - [ ] Add HTML block documentation.

@@ -123,7 +123,6 @@ class SLKSPMessenger:
         """
         return self.vessel.orbit.periapsis_altitude
 
-
     # Reference frame helper functions.
     #   See:
     #   https://krpc.github.io/krpc/tutorials/reference-frames.html
@@ -195,3 +194,27 @@ class SLKSPMessenger:
     def activate_next_stage(self):
         """Activate next stage."""
         self.vessel.control.activate_next_stage()
+
+# The lines below are commented b/c prograde/retrograde not supported yet.
+
+#     def set_sas_mode_prograde(self):
+#         """
+#         Command SAS autopilot to drive vessel to prograde. See
+#         krpc.github.io/krpc/python/api/space-center/control.html#SpaceCenter.SASMode
+#         """
+#         try:
+#            self.vessel.control.sas_mode = self.vessel.control.sas_mode.prograde
+#         except krpc.client.RPCError:
+#            print('Could not set SAS Mode to prograde.')
+#            pass
+
+#     def set_sas_mode_retrograde(self):
+#         """
+#         Command SAS autopilot to drive vessel to retrograde. See
+#         krpc.github.io/krpc/python/api/space-center/control.html#SpaceCenter.SASMode
+#         """
+#         try:
+#            self.vessel.control.sas_mode = self.vessel.control.sas_mode.retrograde
+#         except krpc.client.RPCError:
+#            print('Could not set SAS Mode to retrograde.')
+#            pass

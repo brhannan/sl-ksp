@@ -61,6 +61,14 @@ elems(3).Min = 0;
 elems(3).Max = 360;
 elems(3).Description = 'target heading angle (deg)';
 
+elems(4).Name = 'commandPrograde';
+elems(4).DataType = 'boolean';
+elems(4).Description = 'Command SAS to drive vessel to prograde.';
+
+elems(5).Name = 'commandRetrograde';
+elems(5).DataType = 'boolean';
+elems(5).Description = 'Command SAS to drive vessel to retrograde.';
+
 autopilot = Simulink.Bus;
 autopilot.Elements = elems;
 autopilot.Description = 'autopilot bus';

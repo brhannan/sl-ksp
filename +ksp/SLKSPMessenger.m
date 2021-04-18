@@ -26,10 +26,13 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
         %OutputBusName Output bus
         %   The name of the output bus object.
         OutputBusName = 'kspRxOut'
+    end
+    
+    properties(DiscreteState)
         %CurrentThrottleValue Current throttle value.
         %   The current throttle value. Used to detect throttle setting
         %   change.
-        CurrentThrottleValue = 0
+        CurrentThrottleValue
     end
 
     properties(Access=protected)
@@ -103,7 +106,20 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
             % throttle state.
             if u.control.throttle ~= obj.CurrentThrottleValue
                 obj.SLKSPComm.set_throttle(u.control.throttle);
+                obj.CurrentThrottleValue = u.control.throttle;
             end
+            
+            % Lines below are commented b/c prograde/retrograde not
+            % supported yet.
+            
+%             % Command SAS to drive vessel to prograde or retrograde if
+%             % requested.
+%             if u.autopilot.commandPrograde
+%                 obj.SLKSPComm.set_sas_mode_prograde();
+%             end
+%             if u.autopilot.commandRetrograde
+%                 obj.SLKSPComm.set_sas_mode_retrograde();
+%             end
             
             % Get current values for all reference frames if requested. 
             % This command tells slksp.SLKSPMessenger to update its 
@@ -122,6 +138,7 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
 
         function resetImpl(obj)
             % Initialize / reset discrete-state properties
+            obj.CurrentThrottleValue = 0;
         end
 
         % Backup/restore functions
