@@ -1,13 +1,13 @@
 <deployment-project plugin="plugin.toolbox" plugin-version="1.0">
-  <configuration file="/Users/bhannan/code/sl-ksp/KSPToolbox.prj" location="/Users/bhannan/code/sl-ksp" name="KSPToolbox" target="target.toolbox" target-name="Package Toolbox">
+  <configuration build-checksum="2223559353" file="/Users/bhannan/code/sl-ksp/KSPToolbox.prj" location="/Users/bhannan/code/sl-ksp" name="KSPToolbox" target="target.toolbox" target-name="Package Toolbox">
     <param.appname>KSP Toolbox</param.appname>
-    <param.authnamewatermark>Brian Hannan</param.authnamewatermark>
+    <param.authnamewatermark>B. Hannan</param.authnamewatermark>
     <param.email />
     <param.company />
     <param.summary>Control a rocket in Kerbal Space Program from Simulink.</param.summary>
     <param.description>Control a rocket in Kerbal Space Program from Simulink.</param.description>
     <param.screenshot>${PROJECT_ROOT}/doc/images/kspthumbnail.png</param.screenshot>
-    <param.version>1.1</param.version>
+    <param.version>1.2</param.version>
     <param.output>${PROJECT_ROOT}/KSP Toolbox.mltbx</param.output>
     <param.products.name>
       <item>MATLAB</item>
