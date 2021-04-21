@@ -38,6 +38,8 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
     properties(Access=protected)
         % autopilot state
         AutopilotEngaged = false;
+        % SAS state
+        SASEngaged = false;
     end
 
     methods
@@ -67,6 +69,11 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
             y.vessel.met = obj.SLKSPComm.get_met();
             y.vessel.apoapsisAltitude = obj.SLKSPComm.get_vehicle_apoapsis_altitude();
             y.vessel.periapsisAltitude = obj.SLKSPComm.get_vehicle_periapsis_altitude();
+            y.vessel.timeToApoapsis = obj.SLKSPComm.get_time_to_apoapsis();
+            y.vessel.timeToPeriapsis = obj.SLKSPComm.get_time_to_periapsis();
+            y.vessel.eccentricity = obj.SLKSPComm.get_eccentricity();
+            y.vessel.inclination = obj.SLKSPComm.get_inclination();
+            y.vessel.orbitalSpeed = obj.SLKSPComm.get_orbital_speed();
             % flight
             y.flight.meanAltitude = obj.SLKSPComm.get_mean_altitude();
             y.flight.surfaceAltitude = obj.SLKSPComm.get_surface_altitude();
@@ -85,38 +92,53 @@ classdef SLKSPMessenger < matlab.System & matlab.system.mixin.Propagates & ...
             y.flight.gForce = obj.SLKSPComm.get_g_force();
             
             %--- send ---
-
-            % Set autopilot settings if requested.
-            if u.autopilot.engage && ~obj.AutopilotEngaged
-                % set autopilot pitch, heading
-                obj.SLKSPComm.set_pitch_and_heading( ...
+            
+            obj.SLKSPComm.set_pitch_and_heading( ...
                     u.autopilot.targetPitch, u.autopilot.targetHeading);
+
+            % Engage/disengage autopilot if requested.
+            if u.autopilot.engage && ~obj.AutopilotEngaged
                 obj.SLKSPComm.engage_autopilot;
                 obj.AutopilotEngaged = true;
-                fprintf('Autopilot engaged.\n');
             end
+            % The block below is commented b/c disengage function has not
+            % been implemented yet.
+%             if ~u.autopilot.engage && obj.AutopilotEngaged
+%                 obj.SLKSPComm.disengage_autopilot;
+%                 obj.AutopilotEngaged = false;
+%             end
+            
+            % Engage/disengage stability assist if requested.
+            if u.control.sas && ~obj.SASEngaged
+                obj.SLKSPComm.engage_sas;
+                obj.SASEngaged = true;
+            end
+            % The block below is commented b/c disengage function has not
+            % been implemented yet.
+%             if ~u.control.sas && obj.SASEngaged
+%                 obj.SLKSPComm.disengage_sas;
+%                 obj.SASEngaged = false;
+%             end
 
             % Activate next stage if requested.
             if u.control.activateNextStage
                 obj.SLKSPComm.activate_next_stage();
-                fprintf('Next stage activated.\n');
             end
             
-            % Set throttle if requested value is not equal to current
-            % throttle state.
+            % Set throttle if requested setting is not equal to current
+            % throttle setting.
             if u.control.throttle ~= obj.CurrentThrottleValue
                 obj.SLKSPComm.set_throttle(u.control.throttle);
                 obj.CurrentThrottleValue = u.control.throttle;
             end
             
-            % Lines below are commented b/c prograde/retrograde not
-            % supported yet.
+            % Lines below are commented b/c retrograde not supported yet.
             
-%             % Command SAS to drive vessel to prograde or retrograde if
-%             % requested.
-%             if u.autopilot.commandPrograde
-%                 obj.SLKSPComm.set_sas_mode_prograde();
-%             end
+            % Command SAS to drive vessel to prograde or retrograde if
+            % requested.
+            if u.autopilot.commandPrograde
+                obj.SLKSPComm.set_sas_mode_prograde();
+            end
 %             if u.autopilot.commandRetrograde
 %                 obj.SLKSPComm.set_sas_mode_retrograde();
 %             end

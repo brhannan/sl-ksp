@@ -95,7 +95,7 @@ section below.
 
 KSP Toolbox contains a simple example model. Run it using the steps below. 
 - Open an example project using the MATLAB command 
-```ksp.loadSuborbitalFlightExample```  
+```ksp.openSuborbitalFlightExample```  
 - Open KSP and put any rocket on the pad.  
 - If the kRPC server window doesn't automatically appear in the KSP window,
 select the button shown by the red arrow in the image below. Press the

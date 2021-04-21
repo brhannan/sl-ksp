@@ -36,6 +36,26 @@ elems(5).DataType = 'double';
 elems(5).Description = ['The periapsis of the orbit, in meters, above '  ...
     'the sea level of the body being orbited.'];
 
+elems(6).Name = 'timeToApoapsis';
+elems(6).DataType = 'double';
+elems(6).Description = 'Time to apoapsis (s).';
+
+elems(7).Name = 'timeToPeriapsis';
+elems(7).DataType = 'double';
+elems(7).Description = 'Time to periapsis (s).';
+
+elems(8).Name = 'eccentricity';
+elems(8).DataType = 'double';
+elems(8).Description = 'The eccentricity of the orbit.';
+
+elems(9).Name = 'inclination';
+elems(9).DataType = 'double';
+elems(9).Description = 'The inclination of the orbit.';
+
+elems(10).Name = 'orbitalSpeed';
+elems(10).DataType = 'double';
+elems(10).Description = 'Orbital speed (m/s).';
+
 vesselRx = Simulink.Bus;
 vesselRx.Elements = elems;
 vesselRx.Description = 'received vessel data';

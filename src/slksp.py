@@ -123,6 +123,30 @@ class SLKSPMessenger:
         """
         return self.vessel.orbit.periapsis_altitude
 
+    def get_time_to_apoapsis(self):
+        """
+        The time until the object reaches apoapsis, in seconds.
+        """
+        return self.vessel.orbit.time_to_apoapsis
+
+    def get_time_to_periapsis(self):
+        """
+        The time until the object reaches periapsis, in seconds.
+        """
+        return self.vessel.orbit.time_to_periapsis
+
+    def get_eccentricity(self):
+        """The eccentricity of the orbit."""
+        return self.vessel.orbit.eccentricity
+
+    def get_inclination(self):
+        """The inclination of the orbit (rad)."""
+        return self.vessel.orbit.inclination
+
+    def get_orbital_speed(self):
+        """The current orbital speed (m/s)."""
+        return self.vessel.orbit.orbital_speed
+
     # Reference frame helper functions.
     #   See:
     #   https://krpc.github.io/krpc/tutorials/reference-frames.html
@@ -191,22 +215,31 @@ class SLKSPMessenger:
         """Engage autopilot."""
         self.vessel.auto_pilot.engage()
 
+    def engage_sas(self):
+        """Engage stability assist system."""
+        self.vessel.control.sas = True;
+
+    # TODO: method below has not been incorporated into SLKSPMessenger.
+    def disengage_sas(self):
+        """Engage stability assist system."""
+        self.vessel.control.sas = True;
+
     def activate_next_stage(self):
         """Activate next stage."""
         self.vessel.control.activate_next_stage()
 
 # The lines below are commented b/c prograde/retrograde not supported yet.
 
-#     def set_sas_mode_prograde(self):
-#         """
-#         Command SAS autopilot to drive vessel to prograde. See
-#         krpc.github.io/krpc/python/api/space-center/control.html#SpaceCenter.SASMode
-#         """
-#         try:
-#            self.vessel.control.sas_mode = self.vessel.control.sas_mode.prograde
-#         except krpc.client.RPCError:
-#            print('Could not set SAS Mode to prograde.')
-#            pass
+    def set_sas_mode_prograde(self):
+        """
+        Command SAS autopilot to drive vessel to prograde. See
+        krpc.github.io/krpc/python/api/space-center/control.html#SpaceCenter.SASMode
+        """
+        try:
+           self.vessel.control.sas_mode = self.vessel.control.sas_mode.prograde
+        except krpc.client.RPCError:
+           print('Could not set SAS Mode to prograde.')
+           pass
 
 #     def set_sas_mode_retrograde(self):
 #         """
