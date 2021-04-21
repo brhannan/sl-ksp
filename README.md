@@ -136,8 +136,9 @@ function's  command-line help for more info (enter the  command
 If you see an "Unable to resolve the name py.slksp.SLKSPMessenger" error,
 try the following.
 - Enter the command ```ksp.addSrcToPythonPath``` and simulate again.
-- Enter the command ```ver``` and ensure that KSP Toolbox is on the list
-of installed products. If it isn't, see the install steps above.
+- Enter the command ```matlab.addons.installedAddons``` and ensure that 
+KSP Toolbox is on the list of installed products. If it isn't, see the 
+install steps above.
 - See [this doc page](https://www.mathworks.com/help/matlab/matlab_external/undefined-variable-py-or-function-py-command.html)
 for debugging steps.
 - Check that you are able to import krpc in a Python prompt (not MATLAB).
