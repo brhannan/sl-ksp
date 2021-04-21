@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.toolbox" plugin-version="1.0">
-  <configuration build-checksum="2223559353" file="/Users/bhannan/code/sl-ksp/KSPToolbox.prj" location="/Users/bhannan/code/sl-ksp" name="KSPToolbox" target="target.toolbox" target-name="Package Toolbox">
+  <configuration build-checksum="2209698014" file="/Users/bhannan/code/sl-ksp/KSPToolbox.prj" location="/Users/bhannan/code/sl-ksp" name="KSPToolbox" target="target.toolbox" target-name="Package Toolbox">
     <param.appname>KSP Toolbox</param.appname>
     <param.authnamewatermark>B. Hannan</param.authnamewatermark>
     <param.email />
