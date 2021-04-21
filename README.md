@@ -147,10 +147,10 @@ If this doesn't work, see the kRPC installation link above.
 ## To do
 - [x] Refactor TX, RX blocks so that they share one kRPC object.
 - [x] Package as toolbox.
-- [ ] Add function signatures JSON.
 - [x] Add orbit apoapsis/periapsis to parameters received from KSP.
-- [ ] Add SAS commands (prograde, retrograde, etc.).
-- [ ] Get [orbit params](https://krpc.github.io/krpc/python/api/space-center/orbit.html) from KSP: radius, eccentricity, mean anomaly.
+- [x] Add SAS commands (prograde, retrograde, etc.).
+- [x] Get [orbit params](https://krpc.github.io/krpc/python/api/space-center/orbit.html) from KSP: radius, eccentricity.
+- [ ] Complete orbital flight example.
 - [ ] Add test suite.
 - [ ] Add HTML block documentation.
 - [ ] Add image capture tools for optical nav simulation.
